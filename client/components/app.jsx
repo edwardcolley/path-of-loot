@@ -1,6 +1,6 @@
 import React from 'react';
 import { Header } from './header';
-import { ProductListItem } from './product-list-item';
+import { ProductList } from './product-list';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -16,7 +16,6 @@ export default class App extends React.Component {
         return response.json();
       })
       .then(myJson => {
-
         this.setState({
           products: myJson
         });
@@ -29,10 +28,9 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="container">
         <Header />
-        <br/>
-        <ProductListItem />
+        <ProductList products={this.state.products}/>
       </div>
     );
   }
