@@ -1,6 +1,7 @@
 import React from 'react';
 import { Header } from './header';
 import { ProductList } from './product-list';
+import ProductDetails from './product-details';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -22,6 +23,19 @@ export default class App extends React.Component {
       });
   }
 
+  // getProductById(id) {
+  //   fetch('/api/products.php?id=' + id)
+  //     .then(response => {
+  //       return response.json();
+  //     })
+  //     .then(myJson => {
+  //       console.log(myJson);
+  //       this.setState({
+  //         grades: myJson
+  //       });
+  //     });
+  // }
+
   componentDidMount() {
     this.getProducts();
   }
@@ -31,6 +45,7 @@ export default class App extends React.Component {
       <div className="container">
         <Header />
         <ProductList products={this.state.products}/>
+        <ProductDetails products={this.state.products} />
       </div>
     );
   }

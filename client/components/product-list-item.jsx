@@ -5,7 +5,7 @@ export class ProductListItem extends React.Component {
   render() {
     const price = '$' + ((this.props.input.price / 100).toFixed(2));
     return (
-      <div className="col-sm-4">
+      <div className="col-md-4">
         <div className="card-group h-100">
           <div className="card mt-3" >
             <h5 className="card-header">{this.props.input.name}</h5>
