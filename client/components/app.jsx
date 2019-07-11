@@ -42,12 +42,20 @@ export default class App extends React.Component {
   }
 
   render() {
-    return (
-      <div className="container">
-        <Header />
-        <ProductList onClick={this.setView} products={this.state.products}/>
-        <ProductDetails products={this.state.products} />
-      </div>
-    );
+    if (this.state.view.name === 'catalog') {
+      return (
+        <div className="container">
+          <Header />
+          <ProductList onClick={this.setView} products={this.state.products}/>
+        </div>
+      );
+    } else {
+      return (
+        <div className="container">
+          <Header />
+          <ProductDetails products={this.state.products} />
+        </div>
+      );
+    }
   }
 }
