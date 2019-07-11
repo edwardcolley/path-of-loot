@@ -7,7 +7,7 @@ export class ProductListItem extends React.Component {
     return (
       <div className="col-md-4">
         <div className="card-group h-100">
-          <div className="card mt-3" >
+          <div onClick={this.props.onClick} className="card mt-3" >
             <h5 className="card-header">{this.props.input.name}</h5>
             <img src={this.props.input.image} height="350" width="100%" className="card-img-top" alt="item image" />
             <div className="card-body">

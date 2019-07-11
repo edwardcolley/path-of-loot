@@ -13,6 +13,7 @@ export default class App extends React.Component {
         params: {}
       }
     };
+    this.setView = this.setView.bind(this);
   }
 
   getProducts() {
@@ -30,8 +31,8 @@ export default class App extends React.Component {
   setView(name, params) {
     this.setState({
       view: {
-        'name': name,
-        'params': params
+        name: name,
+        params: params
       }
     });
   }
@@ -44,7 +45,7 @@ export default class App extends React.Component {
     return (
       <div className="container">
         <Header />
-        <ProductList products={this.state.products}/>
+        <ProductList onClick={this.setView} products={this.state.products}/>
         <ProductDetails products={this.state.products} />
       </div>
     );
