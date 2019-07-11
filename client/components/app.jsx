@@ -7,7 +7,11 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      products: []
+      products: [],
+      view: {
+        name: 'catalog',
+        params: {}
+      }
     };
   }
 
@@ -23,18 +27,14 @@ export default class App extends React.Component {
       });
   }
 
-  // getProductById(id) {
-  //   fetch('/api/products.php?id=' + id)
-  //     .then(response => {
-  //       return response.json();
-  //     })
-  //     .then(myJson => {
-  //       console.log(myJson);
-  //       this.setState({
-  //         grades: myJson
-  //       });
-  //     });
-  // }
+  setView(name, params) {
+    this.setState({
+      view: {
+        'name': name,
+        'params': params
+      }
+    });
+  }
 
   componentDidMount() {
     this.getProducts();
