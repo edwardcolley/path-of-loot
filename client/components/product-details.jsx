@@ -37,11 +37,16 @@ export default class ProductDetails extends React.Component {
         </div>
         <div className="row">
           <div className="col-lg-8">
-            <img src={this.state.product.image} alt="image"/>
+            <img className="shadow p-3 mb-5 bg-white rounded" src={this.state.product.image} alt="image"/>
           </div>
           <div className="col-lg-4">
-            <h1>{this.state.product.name} <span className="badge badge-info">{this.fixPrice()}</span></h1>
-            <p className="font-weight-bold">{this.state.product.shortDescription}</p>
+            <h2>{this.state.product.name} <span className="badge badge-info">{this.fixPrice()}</span></h2>
+            <p className="font-weight-bold mt-4">{this.state.product.shortDescription}</p>
+            <div className="row justify-content-md-center">
+              <div className="col-md-6">
+                <button onClick={() => this.props.addToCart(this.state.product)}type="button" className="btn btn-primary btn-lg mx-auto">Add to Cart</button>
+              </div>
+            </div>
           </div>
         </div>
         <div className="row">
