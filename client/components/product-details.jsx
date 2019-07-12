@@ -32,7 +32,7 @@ export default class ProductDetails extends React.Component {
       <div>
         <div className="row">
           <div className="col">
-            <button type="button" className="btn btn-outline-secondary mb-3">Back</button>
+            <button onClick={() => this.props.back('catalog', {})} type="button" className="btn btn-outline-secondary mb-3">Back</button>
           </div>
         </div>
         <div className="row">
