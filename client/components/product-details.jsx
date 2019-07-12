@@ -10,7 +10,7 @@ export default class ProductDetails extends React.Component {
   }
 
   componentDidMount() {
-    fetch('/api/products.php?id=1')
+    fetch('/api/products.php?id=' + this.props.id)
       .then(response => {
         return response.json();
       })
@@ -27,7 +27,6 @@ export default class ProductDetails extends React.Component {
   }
 
   render() {
-    // const price = '$' + ((this.state.product.price / 100).toFixed(2));
     if (!this.state.product) return null;
     return (
       <div>
@@ -37,10 +36,10 @@ export default class ProductDetails extends React.Component {
           </div>
         </div>
         <div className="row">
-          <div className="col-md-8">
+          <div className="col-lg-8">
             <img src={this.state.product.image} alt="image"/>
           </div>
-          <div className="col-md-4">
+          <div className="col-lg-4">
             <h1>{this.state.product.name} <span className="badge badge-info">{this.fixPrice()}</span></h1>
             <p className="font-weight-bold">{this.state.product.shortDescription}</p>
           </div>

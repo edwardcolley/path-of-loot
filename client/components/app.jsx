@@ -53,7 +53,7 @@ export default class App extends React.Component {
       return (
         <div className="container">
           <Header />
-          <ProductDetails products={this.state.products} />
+          <ProductDetails id={this.state.view.params} products={this.state.products} />
         </div>
       );
     }
