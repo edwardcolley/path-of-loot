@@ -6,9 +6,6 @@ require('functions.php');
 set_exception_handler('handleError');
 
 require_once('db_connection.php');
-
-// throw new Exception('Error');
-
 $query = "SELECT * FROM `products`";
 $result = mysqli_query($conn, $query);
 
