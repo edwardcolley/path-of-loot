@@ -2,7 +2,6 @@ import React from 'react';
 import { Header } from './header';
 import { ProductList } from './product-list';
 import ProductDetails from './product-details';
-import { CartSummaryItem } from './cart-summary-item';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -70,7 +69,6 @@ export default class App extends React.Component {
   }
 
   render() {
-    console.log(this.state.cart);
     if (this.state.view.name === 'catalog') {
       return (
         <div className="container-fluid">
