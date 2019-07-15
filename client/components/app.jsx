@@ -85,6 +85,7 @@ export default class App extends React.Component {
           <div className="container">
             <ProductDetails addToCart={this.addToCart} back={this.setView} id={this.state.view.params} products={this.state.products} />
           </div>
+          {/* <CartSummaryItem cart={this.state.cart} /> */}
         </div>
 
       );
