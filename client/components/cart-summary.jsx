@@ -21,13 +21,17 @@ export class CartSummary extends React.Component {
         <div>
           <div className="row">
             <div className="col">
-              <button onClick={() => this.props.back('catalog', {})} type="button" className="btn btn-outline-secondary mb-3">Back</button>
-              <h1 className="display-4">My Cart</h1>
+              <button onClick={() => this.props.back('catalog', {})} type="button" className="btn btn-outline-secondary mb-2 ml-5">Back</button>
+              <h1 className="display-4 ml-5 mb-4">My Cart</h1>
             </div>
           </div>
           <div className="container-fluid">
-            {this.renderCart()}
-            <h2 className="display-4">{priceTotalInDollars}</h2>
+            <div className="row justify-content-center">
+              {this.renderCart()}
+            </div>
+            <div className="row">
+              <h2 className="display-4 ml-5">Total: {priceTotalInDollars}</h2>
+            </div>
           </div>
         </div>
       );
