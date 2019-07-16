@@ -4,6 +4,7 @@ header('Content-Type: application/json');
 require('functions.php');
 
 set_exception_handler('handleError');
+startUp();
 
 require_once('db_connection.php');
 
@@ -23,6 +24,13 @@ if (empty($_GET['id'])) {
   print(json_encode($data));
   
 } else {
-  readfile('dummy-product-details.json');
+  $id = $_GET['id'];
+  $query = "SELECT * FROM `products` WHERE `id`= " . $id;
+  $result = mysqli_query($conn, $query);
+  $info = mysqli_fetch_assoc($result);
+
+  print(json_encode($info));
+
+  // readfile('dummy-product-details.json');
 }
 ?>
