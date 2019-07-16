@@ -23,13 +23,24 @@ if (empty($_GET['id'])) {
   
   print(json_encode($data));
   
+} else if (!is_numeric($_GET['id'])) {
+  throw new Exception('id needs to be a number'.mysqli_error($conn));
+
 } else {
   $id = $_GET['id'];
   $query = "SELECT * FROM `products` WHERE `id`= " . $id;
   $result = mysqli_query($conn, $query);
   $info = mysqli_fetch_assoc($result);
 
-  print(json_encode($info));
+  $rowQuery = mysqli_query($conn, "SELECT * FROM `products`");
+  $numberOfRows = mysqli_num_rows($rowQuery);
+  print($numberOfRows);
+  
+  if ($id <= $numberOfRows) {
+    print(json_encode($info));
+  } else {
+    throw new Exception('Invalid ID:' . $id .mysqli_error($conn));
+  }
 
   // readfile('dummy-product-details.json');
 }
