@@ -13,7 +13,7 @@ if (empty($_GET['id'])) {
   $result = mysqli_query($conn, $query);
   
   if(!$result) {
-    throw new Exception('error with query: '.mysqli_error($conn));
+    throw new Exception('error with query: ');
   }
   
   $data= [];
@@ -24,7 +24,7 @@ if (empty($_GET['id'])) {
   print(json_encode($data));
   
 } else if (!is_numeric($_GET['id'])) {
-  throw new Exception('id needs to be a number'.mysqli_error($conn));
+  throw new Exception('id needs to be a number');
 
 } else {
   $id = $_GET['id'];
@@ -33,7 +33,7 @@ if (empty($_GET['id'])) {
   $info = mysqli_fetch_assoc($result);
   
   if ($id === null) {
-    throw new Exception('Invalid ID:' . $id .mysqli_error($conn));
+    throw new Exception('Invalid ID:' . $id);
   } else {
     print(json_encode($info));
   }
