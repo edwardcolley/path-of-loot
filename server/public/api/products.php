@@ -31,15 +31,11 @@ if (empty($_GET['id'])) {
   $query = "SELECT * FROM `products` WHERE `id`= " . $id;
   $result = mysqli_query($conn, $query);
   $info = mysqli_fetch_assoc($result);
-
-  $rowQuery = mysqli_query($conn, "SELECT * FROM `products`");
-  $numberOfRows = mysqli_num_rows($rowQuery);
-  print($numberOfRows);
   
-  if ($id <= $numberOfRows) {
-    print(json_encode($info));
-  } else {
+  if ($id === null) {
     throw new Exception('Invalid ID:' . $id .mysqli_error($conn));
+  } else {
+    print(json_encode($info));
   }
 }
 ?>
