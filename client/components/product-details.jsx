@@ -37,7 +37,7 @@ export default class ProductDetails extends React.Component {
         </div>
         <div className="row">
           <div className="col-lg-8">
-            <img className="shadow p-3 mb-5 bg-white rounded" src={this.state.product.image} alt="image"/>
+            <img height="500" width="75%" className="shadow p-3 mb-5 bg-white rounded" src={this.state.product.image} alt="image"/>
           </div>
           <div className="col-lg-4">
             <h2>{this.state.product.name} <span className="badge badge-info">{this.fixPrice()}</span></h2>

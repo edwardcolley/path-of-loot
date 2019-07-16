@@ -15,7 +15,7 @@ export class CartSummary extends React.Component {
     if (!this.props.cart) {
       return <h1 className="display-2">You have no items in your cart.</h1>;
     } else {
-      const totalItemPrices = this.props.cart.reduce((accumulator, currentValue) => accumulator + currentValue.price, 0);
+      const totalItemPrices = this.props.cart.reduce((accumulator, currentValue) => accumulator + parseInt(currentValue.price), 0);
       const priceTotalInDollars = '$' + ((totalItemPrices / 100).toFixed(2));
       return (
         <div>
