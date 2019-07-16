@@ -41,7 +41,5 @@ if (empty($_GET['id'])) {
   } else {
     throw new Exception('Invalid ID:' . $id .mysqli_error($conn));
   }
-
-  // readfile('dummy-product-details.json');
 }
 ?>
