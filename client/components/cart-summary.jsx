@@ -17,6 +17,7 @@ export class CartSummary extends React.Component {
         <div>
           <h1 className="display-3">You have no items in your cart.</h1>
           <h1 className="display-4">Total: $0.00</h1>
+          <button onClick={() => this.props.back('catalog', {})} type="button" className="btn btn-outline-secondary mt-5 mb-2 ml-4">Back</button>
         </div>
       );
     } else {
