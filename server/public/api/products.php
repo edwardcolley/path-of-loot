@@ -13,7 +13,7 @@ if (empty($_GET['id'])) {
   $result = mysqli_query($conn, $query);
   
   if(!$result) {
-    throw new Exception('error with query: ');
+    throw new Exception('error with query: ' . msqli_connect_error($conn));
   }
   
   $data= [];
@@ -32,7 +32,7 @@ if (empty($_GET['id'])) {
   $result = mysqli_query($conn, $query);
   $info = mysqli_fetch_assoc($result);
   
-  if ($id === null) {
+  if ($info === null) {
     throw new Exception('Invalid ID:' . $id);
   } else {
     print(json_encode($info));
