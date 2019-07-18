@@ -9,7 +9,9 @@ startUp();
 require_once('db_connection.php');
 
 if (empty($_GET['id'])) {
-  $query = "SELECT * FROM `products`";
+  $query = "SELECT p.id, p.name, p.price, p.shortDescription, 
+            (SELECT `image` FROM `images` WHERE `product_id` = p.id LIMIT 1) AS `image`
+            FROM `products` AS p";
   $result = mysqli_query($conn, $query);
   
   if(!$result) {
@@ -28,14 +30,26 @@ if (empty($_GET['id'])) {
 
 } else {
   $id = $_GET['id'];
-  $query = "SELECT * FROM `products` WHERE `id`= " . $id;
+  $query = "SELECT p.name, p.price, p.shortDescription, 
+	              GROUP_CONCAT(i.image) AS images
+	              FROM `products` AS p
+	              JOIN `images` AS i 
+	              ON p.id = i.product_id 
+                WHERE p.id = $id 
+                GROUP BY p.id";
   $result = mysqli_query($conn, $query);
-  $info = mysqli_fetch_assoc($result);
+
+  $data= [];
+  while($row = mysqli_fetch_assoc($result)) {
+    $row['images'] = explode(",", $row['images']);
+    $data[] = $row;
+
+  };
   
-  if ($info === null) {
+  if ($data === null) {
     throw new Exception('Invalid ID:' . $id);
   } else {
-    print(json_encode($info));
+    print(json_encode($data));
   }
 }
 ?>
