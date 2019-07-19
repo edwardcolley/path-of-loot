@@ -4,6 +4,7 @@ import { ProductList } from './product-list';
 import ProductDetails from './product-details';
 import { CartSummary } from './cart-summary';
 import { CheckoutForm } from './checkout-form';
+import { Navbar } from './navbar';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -94,14 +95,18 @@ export default class App extends React.Component {
   render() {
     if (this.state.view.name === 'catalog') {
       return (
-        <div className="container-fluid">
-          <Header onClick={this.setView} cartItemCount={this.state.cart.length}/>
-          <ProductList onClick={this.setView} products={this.state.products}/>
+        <div>
+          <Navbar onClick={this.setView} cartItemCount={this.state.cart.length}/>
+          <div className="container-fluid">
+            <Header />
+            <ProductList onClick={this.setView} products={this.state.products}/>
+          </div>
         </div>
       );
     } else if (this.state.view.name === 'cart') {
       return (
         <div>
+          <Navbar onClick={this.setView} cartItemCount={this.state.cart.length}/>
           <Header />
           <CartSummary cart={this.state.cart} back={this.setView}/>;
         </div>
@@ -109,20 +114,21 @@ export default class App extends React.Component {
     } else if (this.state.view.name === 'checkout') {
       return (
         <div>
-          <Header onClick={this.setView} cartItemCount={this.state.cart.length}/>
+          <Navbar onClick={this.setView} cartItemCount={this.state.cart.length}/>
+          <Header/>
           <CheckoutForm back={this.setView} cart={this.state.cart} placeOrder={this.placeOrder}/>
         </div>
       );
     } else {
       return (
         <div>
+          <Navbar onClick={this.setView} cartItemCount={this.state.cart.length}/>
           <div className="container-fluid">
-            <Header onClick={this.setView} cartItemCount={this.state.cart.length}/>
+            <Header/>
           </div>
           <div className="container">
             <ProductDetails addToCart={this.addToCart} back={this.setView} id={this.state.view.params} products={this.state.products} />
           </div>
-
         </div>
 
       );

@@ -38,6 +38,7 @@ export class CartSummary extends React.Component {
             </div>
             <div className="row justify-content-around">
               <div className="col-lg-3">
+                <div className="row"></div>
                 <h2 className="display-4 ml-5">Total: {priceTotalInDollars}</h2>
               </div>
               <div className="col-lg-1">
