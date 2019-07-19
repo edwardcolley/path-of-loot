@@ -39,16 +39,12 @@ if (empty($_GET['id'])) {
                 GROUP BY p.id";
   $result = mysqli_query($conn, $query);
 
-  $data= [];
-  while($row = mysqli_fetch_assoc($result)) {
-    $row['images'] = explode(",", $row['images']);
-    $data[] = $row;
-
-  };
+  $data = mysqli_fetch_assoc($result);
   
   if ($data === null) {
     throw new Exception('Invalid ID:' . $id);
   } else {
+    $data['images'] = explode(",", $data['images']);
     print(json_encode($data));
   }
 }
