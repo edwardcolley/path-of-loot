@@ -78,6 +78,14 @@ export default class App extends React.Component {
 
   }
 
+  deleteFromCart(product) {
+    fetch('/api/cart.php', {
+      method: 'DELETE',
+      body: JSON.stringify(product),
+      headers: { 'Content-Type': 'application/json' }
+    });
+  }
+
   setView(name, params) {
     this.setState({
       view: {

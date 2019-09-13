@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button } from 'reactstrap';
 
 export class CartSummaryItem extends React.Component {
 
@@ -13,6 +14,7 @@ export class CartSummaryItem extends React.Component {
           <h2 className="card-title mt-4 ml-4">{this.props.input.name}</h2>
           <h2 className="ml-4 mt-1"><span className="badge badge-info">{price}</span></h2>
           <p className="card-text ml-4 mt-4">{this.props.input.shortDescription}</p>
+          <Button color="secondary">Remove</Button>
         </div>
       </div>
     );

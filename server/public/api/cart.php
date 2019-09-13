@@ -33,7 +33,23 @@ if ($method == 'GET') {
   print(json_encode([
       'success' => $return_value
   ]));
-} else {
+} else if ($method == 'DELETE'){
+  http_response_code(204);
+  $itemConverted = json_decode($item);
+  $query = "DELETE FROM `cart` WHERE `product_id` = '$itemConverted->product_id'
+            LIMIT 1";
+  
+
+  $return_value = mysqli_query($conn, $query);
+
+  if(!$return_value) {
+    throw new Exception('Error: no deletion occured: '. mysqli_error($conn));
+}
+
+  print(json_encode([
+      'success' => $return_value
+  ]));
+} {
   http_response_code(404);
   print(json_encode([
     'error' => 'Not Found',
