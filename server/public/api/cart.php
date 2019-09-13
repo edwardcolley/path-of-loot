@@ -3,14 +3,36 @@
 header('Content-Type: application/json');
 
 define('INTERNAL', true);
+require_once('db_connection.php');
 $method = $_SERVER['REQUEST_METHOD'];
 $item = file_get_contents('php://input');
 
 if ($method == 'GET') {
-  readfile('dummy-cart-items.json');
+  $query = "SELECT p.* from products as p
+            right join cart as c on c.product_id = p.id";
+  
+  $result = mysqli_query($conn, $query);
+
+  if(!$result) {
+    throw new Exception('error with query: ' . msqli_connect_error($conn));
+  }
+  
+  $data= [];
+  while($row = mysqli_fetch_assoc($result)) {
+    $data[] = $row;
+  }
+  print(json_encode($data));
+
 } else if ($method == 'POST') {
-  http_response_code(201);
-  print($item);
+  $itemConverted = json_decode($item);
+  
+  $sql =  "INSERT INTO `cart` (product_id)
+            VALUES ($itemConverted->id)";
+
+  $return_value = mysqli_query($conn, $sql);
+  print(json_encode([
+      'success' => $return_value
+  ]));
 } else {
   http_response_code(404);
   print(json_encode([

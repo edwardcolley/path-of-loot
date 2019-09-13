@@ -30,7 +30,7 @@ if (empty($_GET['id'])) {
 
 } else {
   $id = $_GET['id'];
-  $query = "SELECT p.name, p.price, p.shortDescription, 
+  $query = "SELECT p.id, p.name, p.price, p.shortDescription, 
 	              GROUP_CONCAT(i.image) AS images
 	              FROM `products` AS p
 	              JOIN `images` AS i 
