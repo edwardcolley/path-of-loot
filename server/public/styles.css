@@ -1,4 +1,27 @@
+@import url('https://fonts.googleapis.com/css?family=Exo&display=swap');
+
+body {
+    font-family: 'Exo', sans-serif;
+    height: 100vh;
+    background-image: url('./images/poeBackground.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+}
+
 .cart,
 .card {
     cursor: pointer;
 }
+
+.poeBanner {
+    background-color: black;
+}
+
+.poeHeaderFont {
+    font-size: 72px;
+    background: -webkit-linear-gradient( rgba(206, 38, 38, 0.687),  rgba(236, 223, 36, 0.878));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }

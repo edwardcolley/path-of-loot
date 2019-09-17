@@ -4,7 +4,7 @@ import { ProductList } from './product-list';
 import ProductDetails from './product-details';
 import { CartSummary } from './cart-summary';
 import { CheckoutForm } from './checkout-form';
-import { Navbar } from './navbar';
+import { NavBar } from './navbar';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -19,6 +19,7 @@ export default class App extends React.Component {
     };
     this.setView = this.setView.bind(this);
     this.addToCart = this.addToCart.bind(this);
+    this.deleteFromCart = this.deleteFromCart.bind(this);
     this.placeOrder = this.placeOrder.bind(this);
   }
 
@@ -104,7 +105,7 @@ export default class App extends React.Component {
     if (this.state.view.name === 'catalog') {
       return (
         <div>
-          <Navbar onClick={this.setView} cartItemCount={this.state.cart.length}/>
+          <NavBar onClick={this.setView} cartItemCount={this.state.cart.length}/>
           <div className="container-fluid">
             <Header />
             <ProductList onClick={this.setView} products={this.state.products}/>
@@ -114,15 +115,15 @@ export default class App extends React.Component {
     } else if (this.state.view.name === 'cart') {
       return (
         <div>
-          <Navbar onClick={this.setView} cartItemCount={this.state.cart.length}/>
+          <NavBar onClick={this.setView} cartItemCount={this.state.cart.length}/>
           <Header />
-          <CartSummary cart={this.state.cart} back={this.setView}/>;
+          <CartSummary delete={this.deleteFromCart} cart={this.state.cart} back={this.setView}/>;
         </div>
       );
     } else if (this.state.view.name === 'checkout') {
       return (
         <div>
-          <Navbar onClick={this.setView} cartItemCount={this.state.cart.length}/>
+          <NavBar onClick={this.setView} cartItemCount={this.state.cart.length}/>
           <Header/>
           <CheckoutForm back={this.setView} cart={this.state.cart} placeOrder={this.placeOrder}/>
         </div>
@@ -130,7 +131,7 @@ export default class App extends React.Component {
     } else {
       return (
         <div>
-          <Navbar onClick={this.setView} cartItemCount={this.state.cart.length}/>
+          <NavBar onClick={this.setView} cartItemCount={this.state.cart.length}/>
           <div className="container-fluid">
             <Header/>
           </div>

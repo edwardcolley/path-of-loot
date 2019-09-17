@@ -37,7 +37,7 @@ export default class ProductDetails extends React.Component {
           </div>
         </div>
         <div className="row">
-          <div className="col-lg-8">
+          <div className="col-lg-6">
             <ImageCarousel images={this.state.product.images}/>
           </div>
           <div className="col-lg-4">

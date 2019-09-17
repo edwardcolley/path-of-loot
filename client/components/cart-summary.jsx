@@ -6,7 +6,7 @@ export class CartSummary extends React.Component {
   renderCart() {
     return this.props.cart.map(input => {
       return (
-        <CartSummaryItem key={input.id} input={input}/>
+        <CartSummaryItem delete={this.props.delete} key={input.id} input={input}/>
       );
     });
   }

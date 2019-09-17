@@ -49,7 +49,7 @@ if ($method == 'GET') {
   print(json_encode([
       'success' => $return_value
   ]));
-} {
+} else {
   http_response_code(404);
   print(json_encode([
     'error' => 'Not Found',
