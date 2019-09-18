@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from 'reactstrap';
+import { Button, Row } from 'reactstrap';
 
 export class CartSummaryItem extends React.Component {
   constructor(props) {
@@ -7,6 +7,8 @@ export class CartSummaryItem extends React.Component {
     this.state = {
       removed: false
     };
+
+    this.findImage = this.findImage.bind(this);
   }
 
   deleteItem() {
@@ -16,20 +18,30 @@ export class CartSummaryItem extends React.Component {
     this.props.delete(this.props.input);
   }
 
+  findImage() {
+    if (!this.props.input.image) {
+      return this.props.input.images[0];
+    } else {
+      return this.props.input.image;
+    }
+  }
+
   render() {
     const price = '$' + ((this.props.input.price / 100).toFixed(2));
     return (
       <React.Fragment>
         {this.state.removed === false &&
-        <div className="card flex-row flex-wrap h-25 w-75 mb-3">
-          <div className="card-header border-0">
-            <img height="200" width="200"src={this.props.input.image} alt="item image" />
+        <div className="card flex-row flex-wrap h-50 w-75 mb-3 shadow">
+          <div className="card-header w-25 border-0">
+            <img height="200" width="200"src={this.findImage()} alt="item image" />
           </div>
-          <div className="card-block px-2">
-            <h2 className="card-title mt-4 ml-4">{this.props.input.name}</h2>
-            <h2 className="ml-4 mt-1"><span className="badge badge-info">{price}</span></h2>
-            <p className="card-text ml-4 mt-4">{this.props.input.shortDescription}</p>
-            <Button color="secondary" onClick={() => this.deleteItem()}>Remove</Button>
+          <div className="card-block w-75 px-2">
+            <Row className="justify-content-end mr-2 mt-2">
+              <Button color="secondary" onClick={() => this.deleteItem()}>Remove</Button>
+            </Row>
+            <h3 className="card-title mt-4 ml-4">{this.props.input.name}</h3>
+            <h3 className="ml-4 mt-1"><span className="badge badge-info">{price}</span></h3>
+            <p className="card-text ml-4 mt-4 mb-2">{this.props.input.shortDescription}</p>
           </div>
         </div>}
         {this.state.removed === true &&

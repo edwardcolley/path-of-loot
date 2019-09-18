@@ -25,3 +25,15 @@ body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
+
+  .myCartTitle {
+      height: 6vh;
+      background-color: rgba(140, 130, 130, 0.618);
+      border-radius: 6px
+  }
+
+  .productDescription {
+      background-color: rgba(34, 56, 84, 0.618);
+      border-radius: 4px;
+      height: 54vh;
+  }

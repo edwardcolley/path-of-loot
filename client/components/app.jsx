@@ -74,9 +74,10 @@ export default class App extends React.Component {
       headers: { 'Content-Type': 'application/json' }
     })
       .then(response => response.json())
-      .then(myJson => this.setState({ cart: [...this.state.cart, myJson] }))
+      .then(myJson => {
+        this.setState({ cart: [...this.state.cart, myJson.item] });
+      })
       .catch(error => console.error('Error: ', error));
-
   }
 
   deleteFromCart(product) {
@@ -84,7 +85,12 @@ export default class App extends React.Component {
       method: 'DELETE',
       body: JSON.stringify(product),
       headers: { 'Content-Type': 'application/json' }
-    });
+    })
+      .then(myJson => {
+        const newCartArray = this.state.cart.filter(incart => incart.cart_id !== product.cart_id);
+        this.setState({ cart: newCartArray });
+      })
+      .catch(error => console.error('Error: ', error));
   }
 
   setView(name, params) {
@@ -116,7 +122,7 @@ export default class App extends React.Component {
       return (
         <div>
           <NavBar onClick={this.setView} cartItemCount={this.state.cart.length}/>
-          <Header />
+          {/* <Header /> */}
           <CartSummary delete={this.deleteFromCart} cart={this.state.cart} back={this.setView}/>;
         </div>
       );
@@ -132,9 +138,6 @@ export default class App extends React.Component {
       return (
         <div>
           <NavBar onClick={this.setView} cartItemCount={this.state.cart.length}/>
-          <div className="container-fluid">
-            <Header/>
-          </div>
           <div className="container">
             <ProductDetails addToCart={this.addToCart} back={this.setView} id={this.state.view.params} products={this.state.products} />
           </div>
