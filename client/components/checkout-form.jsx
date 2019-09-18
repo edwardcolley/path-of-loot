@@ -1,4 +1,5 @@
 import React from 'react';
+import { Row, Button } from 'reactstrap';
 
 export class CheckoutForm extends React.Component {
   constructor(props) {
@@ -46,42 +47,43 @@ export class CheckoutForm extends React.Component {
     const totalItemPrices = this.props.cart.reduce((accumulator, currentValue) => accumulator + parseInt(currentValue.price), 0);
     const priceTotalInDollars = '$' + ((totalItemPrices / 100).toFixed(2));
     return (
-      <form onSubmit={this.handleSubmit}>
-        <div className="row justify-content-center">
-          <div className="col-lg-6">
-            <h1 className="display-2 mt-3">Checkout</h1>
-            <p className="text-muted">Total: {priceTotalInDollars}</p>
-            <div className="input-group input-group-lg mt-2">
-              <div className="input-group-prepend">
-                <span className="input-group-text" id="inputGroup-sizing-lg">required</span>
+      <React.Fragment>
+        <Row className="poeBanner mt-3 justify-content-center">
+          <img height="100" src="/images/poeicon3.jpg" className="mt-3"></img>
+          <h1 className="poeHeaderFont display-3 font-weight-bold text-center mt-4">Checkout</h1>
+        </Row>
+        <form onSubmit={this.handleSubmit} className="mt-5">
+          <div className="row justify-content-center">
+            <div className="col-sm-9 col-lg-6">
+              <div className="input-group input-group-lg mt-2">
+                <div className="input-group-prepend">
+                  <span className="input-group-text" id="inputGroup-sizing-lg">required</span>
+                </div>
+                <input type="text" className="form-control" onChange={this.handleChangeName} placeholder="Full Name" aria-label="Full Name" aria-describedby="inputGroup-sizing-lg" />
               </div>
-              <input type="text" className="form-control" onChange={this.handleChangeName} placeholder="Full Name" aria-label="Full Name" aria-describedby="inputGroup-sizing-lg" />
-            </div>
 
-            <div className="input-group input-group-lg mt-4">
-              <div className="input-group-prepend">
-                <span className="input-group-text" id="inputGroup-sizing-lg">required</span>
+              <div className="input-group input-group-lg mt-4">
+                <div className="input-group-prepend">
+                  <span className="input-group-text" id="inputGroup-sizing-lg">required</span>
+                </div>
+                <input type="text" className="form-control" onChange={this.handleChangeCreditCard} placeholder="Payment Method" aria-label="Payment Method" aria-describedby="inputGroup-sizing-lg" />
               </div>
-              <input type="text" className="form-control" onChange={this.handleChangeCreditCard} placeholder="Payment Method" aria-label="Payment Method" aria-describedby="inputGroup-sizing-lg" />
-            </div>
 
-            <div className="input-group input-group-lg mt-4">
-              <div className="input-group-prepend">
-                <span className="input-group-text" id="inputGroup-sizing-lg">Shipping Address</span>
+              <div className="input-group input-group-lg mt-4">
+                <div className="input-group-prepend">
+                  <span className="input-group-text" id="inputGroup-sizing-lg">Shipping Address</span>
+                </div>
+                <textarea className="form-control" aria-label="Required" onChange={this.handleChangeShippingAddress} />
               </div>
-              <textarea className="form-control" aria-label="Required" onChange={this.handleChangeShippingAddress} />
+              <Row className="justify-content-around">
+                <Button size="sm" color="primary" onClick={() => this.props.back('catalog', {})} type="button" className="mt-5 mb-3">Continue Shopping</Button>
+                <p className="text-white mt-5">Total: {priceTotalInDollars}</p>
+                <Button size="sm" type="submit" color="primary" className="orderBtn mt-5">Place Order</Button>
+              </Row>
             </div>
           </div>
-        </div>
-        <div className="row justify-content-around mt-5">
-          <div className="col-2">
-            <button onClick={() => this.props.back('catalog', {})} type="button" className="btn btn-link">Continue Shopping</button>
-          </div>
-          <div className="col-1">
-            <button type="submit" className="btn btn-primary">Place Order</button>
-          </div>
-        </div>
-      </form>
+        </form>
+      </React.Fragment>
     );
   }
 }

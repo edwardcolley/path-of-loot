@@ -122,7 +122,6 @@ export default class App extends React.Component {
       return (
         <div>
           <NavBar onClick={this.setView} cartItemCount={this.state.cart.length}/>
-          {/* <Header /> */}
           <CartSummary delete={this.deleteFromCart} cart={this.state.cart} back={this.setView}/>;
         </div>
       );
@@ -130,7 +129,6 @@ export default class App extends React.Component {
       return (
         <div>
           <NavBar onClick={this.setView} cartItemCount={this.state.cart.length}/>
-          <Header/>
           <CheckoutForm back={this.setView} cart={this.state.cart} placeOrder={this.placeOrder}/>
         </div>
       );

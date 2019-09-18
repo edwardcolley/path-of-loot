@@ -1,11 +1,12 @@
 import React from 'react';
+import { Col } from 'reactstrap';
 
 export class ProductListItem extends React.Component {
 
   render() {
     const price = '$' + ((this.props.input.price / 100).toFixed(2));
     return (
-      <div className="col-md-3">
+      <Col sm={{ size: 6 }} lg={{ size: 4 }} xl={{ size: 3 }}>
         <div className="card-group h-100">
           <div onClick={this.props.onClick} className="card mt-3 shadow p-3 mb-5 bg-white rounded" >
             <h5 className="card-header">{this.props.input.name}</h5>
@@ -16,7 +17,7 @@ export class ProductListItem extends React.Component {
             </div>
           </div>
         </div>
-      </div>
+      </Col>
     );
   }
 

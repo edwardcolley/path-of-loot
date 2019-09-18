@@ -37,3 +37,7 @@ body {
       border-radius: 4px;
       height: 54vh;
   }
+
+  .orderBtn {
+      height: 33px;
+  }

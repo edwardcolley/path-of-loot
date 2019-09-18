@@ -38,10 +38,10 @@ export default class ProductDetails extends React.Component {
           </Col>
         </Row>
         <Row>
-          <Col lg={{ size: 6 }}>
+          <Col sm={{ size: 8, offset: 2 }} lg={{ size: 6, offset: 3 }}>
             <ImageCarousel images={this.state.product.images}/>
           </Col>
-          <Col lg={{ size: 4, offset: 1 }} className="productDescription">
+          <Col xs={{ size: 10, offset: 1 }} lg={{ size: 8, offset: 2 }} className="productDescription">
             <h2 className="font-weight-bold text-white">{this.state.product.name} <span className="badge badge-info">{this.fixPrice()}</span></h2>
             <p className="font-weight-bold text-white mt-4">{this.state.product.shortDescription}</p>
             <Row className="justify-content-md-center">

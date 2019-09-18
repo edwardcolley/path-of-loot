@@ -1,5 +1,6 @@
 import React from 'react';
 import { ProductListItem } from './product-list-item';
+import { Col, Row } from 'reactstrap';
 
 export class ProductList extends React.Component {
 
@@ -13,11 +14,11 @@ export class ProductList extends React.Component {
 
   render() {
     return (
-      <div className="col">
-        <div className="row">
+      <Col>
+        <Row>
           {this.renderItems()}
-        </div>
-      </div>
+        </Row>
+      </Col>
     );
   }
 }

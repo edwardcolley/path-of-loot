@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Row } from 'reactstrap';
+import { Button, Row, Col } from 'reactstrap';
 
 export class CartSummaryItem extends React.Component {
   constructor(props) {
@@ -39,9 +39,13 @@ export class CartSummaryItem extends React.Component {
             <Row className="justify-content-end mr-2 mt-2">
               <Button color="secondary" onClick={() => this.deleteItem()}>Remove</Button>
             </Row>
-            <h3 className="card-title mt-4 ml-4">{this.props.input.name}</h3>
-            <h3 className="ml-4 mt-1"><span className="badge badge-info">{price}</span></h3>
-            <p className="card-text ml-4 mt-4 mb-2">{this.props.input.shortDescription}</p>
+            <Row>
+              <Col xs={{ size: 6, offset: 4 }} sm={{ size: 8, offset: 4 }} lg={{ size: 10, offset: 1 }}>
+                <h3 className="card-title mt-4 ml-4">{this.props.input.name}</h3>
+                <h3 className="ml-4 mt-1"><span className="badge badge-info">{price}</span></h3>
+                <p className="card-text ml-4 mt-4 mb-2">{this.props.input.shortDescription}</p>
+              </Col>
+            </Row>
           </div>
         </div>}
         {this.state.removed === true &&
