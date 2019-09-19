@@ -15,7 +15,7 @@ export default class App extends React.Component {
         name: 'catalog',
         params: {}
       },
-      cart: []
+      cart: {}
     };
     this.setView = this.setView.bind(this);
     this.addToCart = this.addToCart.bind(this);
@@ -61,6 +61,7 @@ export default class App extends React.Component {
         return response.json();
       })
       .then(myJson => {
+        console.log('getCartItems Json: ', myJson);
         this.setState({
           cart: myJson
         });
@@ -68,6 +69,7 @@ export default class App extends React.Component {
   }
 
   addToCart(product) {
+    console.log('product: ', product);
     fetch('/api/cart.php', {
       method: 'POST',
       body: JSON.stringify(product),
@@ -75,7 +77,30 @@ export default class App extends React.Component {
     })
       .then(response => response.json())
       .then(myJson => {
-        this.setState({ cart: [...this.state.cart, myJson.item] });
+        var prevState = { ...this.state.cart };
+        var itemId = myJson.item.id;
+        if (this.state.cart[product.id] === undefined) {
+          this.setState({
+            cart: {
+              ...prevState,
+              [`${itemId}`]: {
+                quantity: 1,
+                name: myJson.item.name
+              }
+            }
+          });
+        } else {
+          this.setState({
+            cart: {
+              ...prevState,
+              [`${itemId}`]: {
+                quantity: myJson.quantity++,
+                name: myJson.item.name
+              }
+            }
+          });
+        }
+        // this.setState({ cart: [...this.state.cart, myJson.item] });
       })
       .catch(error => console.error('Error: ', error));
   }
@@ -108,6 +133,7 @@ export default class App extends React.Component {
   }
 
   render() {
+    console.log(this.state);
     if (this.state.view.name === 'catalog') {
       return (
         <div>
