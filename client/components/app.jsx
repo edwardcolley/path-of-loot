@@ -90,15 +90,18 @@ export default class App extends React.Component {
     })
       .then(response => response.json())
       .then(myJson => {
+        // console.log('this.state.productid.', this.state.cart[product.id]['quantity']);
         var prevState = { ...this.state.cart };
         var itemId = myJson.item.id;
-        if (this.state.cart[product.id] === undefined) {
+        if (this.state.cart[product.id]) {
+          var newQuantity = parseInt(this.state.cart[product.id]['quantity']) + 1;
           this.setState({
             cart: {
               ...prevState,
               [`${itemId}`]: {
-                quantity: 1,
-                name: myJson.item.name
+                quantity: newQuantity,
+                name: myJson.item.name,
+                image: myJson.item.image
               }
             }
           });
@@ -107,15 +110,17 @@ export default class App extends React.Component {
             cart: {
               ...prevState,
               [`${itemId}`]: {
-                quantity: myJson.quantity++,
-                name: myJson.item.name
+                quantity: 1,
+                name: myJson.item.name,
+                image: myJson.item.image
               }
             }
           });
+          
         }
-        // this.setState({ cart: [...this.state.cart, myJson.item] });
       })
       .catch(error => console.error('Error: ', error));
+      console.log('this.addtocart this.state.cart: ', this.state.cart);
   }
 
   deleteFromCart(product) {
@@ -163,6 +168,7 @@ export default class App extends React.Component {
   }
 
   render() {
+    console.log('this.state.cart: ', this.state.cart);
     if (this.state.view.name === 'catalog') {
       return (
         <div>

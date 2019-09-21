@@ -79,9 +79,9 @@ if ($method == 'GET') {
                 WHERE `product_id` = $itemConverted->id";
   
     $return_value = mysqli_query($conn, $sql);
-    // $cart_id = mysqli_insert_id($conn);
+    $cart_id = mysqli_insert_id($conn);
   
-    // $itemConverted->cart_id = $cart_id;
+    $itemConverted->cart_id = $cart_id;
   
     print(json_encode([
         'success' => $return_value,
@@ -97,9 +97,9 @@ if ($method == 'GET') {
     
   
     $return_value = mysqli_query($conn, $query);
-    // $cart_id = mysqli_insert_id($conn);
+    $cart_id = mysqli_insert_id($conn);
   
-    // $itemConverted->cart_id = $cart_id;
+    $itemConverted->cart_id = $cart_id;
   
     print(json_encode([
         'success' => $return_value,

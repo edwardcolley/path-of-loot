@@ -8,7 +8,7 @@ export class CartSummaryItem extends React.Component {
       removed: false
     };
 
-    this.findImage = this.findImage.bind(this);
+    // this.findImage = this.findImage.bind(this);
   }
 
   deleteItem() {
@@ -18,27 +18,28 @@ export class CartSummaryItem extends React.Component {
     this.props.delete(this.props.input);
   }
 
-  findImage() {
-    if (!this.props.input.image) {
-      return this.props.input.images[0];
-    } else {
-      return this.props.input.image;
-    }
-  }
+  // findImage() {
+  //   if (!this.props.input.image) {
+  //     return this.props.input.images[0];
+  //   } else {
+  //     return this.props.input.image;
+  //   }
+  // }
 
   render() {
-    console.log('cart-summary-item loaded');
+    console.log(this.props.input);
     const price = '$' + ((this.props.input.price / 100).toFixed(2));
     return (
       <React.Fragment>
         {this.state.removed === false &&
         <div className="card flex-row flex-wrap h-50 w-75 mb-3 shadow">
           <div className="card-header w-25 border-0">
-            <img height="200" width="200"src={this.findImage()} alt="item image" />
+            <img height="200" width="200"src={this.props.input.image} alt="item image" />
           </div>
           <div className="card-block w-75 px-2">
             <Row className="justify-content-end mr-2 mt-2">
               <Button color="secondary" onClick={() => this.deleteItem()}>Remove</Button>
+              <p>Ammount: {this.props.input.quantity}</p>
             </Row>
             <Row>
               <Col xs={{ size: 6, offset: 4 }} sm={{ size: 8, offset: 4 }} lg={{ size: 10, offset: 1 }}>

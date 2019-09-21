@@ -23,7 +23,6 @@ export class NavBar extends React.Component {
     for (var key in this.props.cartItemCount) {
       cartQuantityArray.push(this.props.cartItemCount[key]['quantity']);
     }
-    console.log('cartQuantityArray: ', cartQuantityArray);
     const totalQuantity = cartQuantityArray.reduce((accumulator, currentValue) => accumulator + parseInt(currentValue), 0);
     return totalQuantity;
   }
