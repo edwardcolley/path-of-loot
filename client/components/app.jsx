@@ -61,15 +61,28 @@ export default class App extends React.Component {
         return response.json();
       })
       .then(myJson => {
-        console.log('getCartItems Json: ', myJson);
-        this.setState({
-          cart: myJson
-        });
+        var prevState = { ...this.state.cart };
+        for (var i = 0; i <= myJson.length - 1; i++) {
+          // prevState = { ...this.state.cart };
+          this.setState({
+            cart: {
+              ...this.state.cart,
+              [myJson[i].id]: {
+                name: myJson[i].name,
+                quantity: myJson[i].quantity,
+                image: myJson[i].image,
+                cart_id: myJson[i].cart_id,
+                price: myJson[i].price,
+                product_id: myJson[i].product_id,
+                shortDescription: myJson[i].shortDescription
+              }
+            }
+          });
+        }
       });
   }
 
   addToCart(product) {
-    console.log('product: ', product);
     fetch('/api/cart.php', {
       method: 'POST',
       body: JSON.stringify(product),
@@ -112,8 +125,25 @@ export default class App extends React.Component {
       headers: { 'Content-Type': 'application/json' }
     })
       .then(myJson => {
-        const newCartArray = this.state.cart.filter(incart => incart.cart_id !== product.cart_id);
-        this.setState({ cart: newCartArray });
+        if (product.quantity === 1) {
+          this.setState({
+            cart: {
+              [product.id]: null
+            }
+          });
+        } else {
+          this.setState({
+            cart: {
+              [product.id]: {
+                name: [product.name],
+                quantity: [product.quantity] - 1
+              }
+            }
+          });
+        }
+
+        // const newCartArray = this.state.cart.filter(incart => incart.cart_id !== product.cart_id);
+        // this.setState({ cart: newCartArray });
       })
       .catch(error => console.error('Error: ', error));
   }
@@ -133,11 +163,10 @@ export default class App extends React.Component {
   }
 
   render() {
-    console.log(this.state);
     if (this.state.view.name === 'catalog') {
       return (
         <div>
-          <NavBar onClick={this.setView} cartItemCount={this.state.cart.length}/>
+          <NavBar onClick={this.setView} cartItemCount={this.state.cart}/>
           <div className="container-fluid">
             <Header />
             <ProductList onClick={this.setView} products={this.state.products}/>
@@ -147,21 +176,21 @@ export default class App extends React.Component {
     } else if (this.state.view.name === 'cart') {
       return (
         <div>
-          <NavBar onClick={this.setView} cartItemCount={this.state.cart.length}/>
+          <NavBar onClick={this.setView} cartItemCount={this.state.cart}/>
           <CartSummary delete={this.deleteFromCart} cart={this.state.cart} back={this.setView}/>;
         </div>
       );
     } else if (this.state.view.name === 'checkout') {
       return (
         <div>
-          <NavBar onClick={this.setView} cartItemCount={this.state.cart.length}/>
+          <NavBar onClick={this.setView} cartItemCount={this.state.cart}/>
           <CheckoutForm back={this.setView} cart={this.state.cart} placeOrder={this.placeOrder}/>
         </div>
       );
     } else {
       return (
         <div>
-          <NavBar onClick={this.setView} cartItemCount={this.state.cart.length}/>
+          <NavBar onClick={this.setView} cartItemCount={this.state.cart}/>
           <div className="container">
             <ProductDetails addToCart={this.addToCart} back={this.setView} id={this.state.view.params} products={this.state.products} />
           </div>

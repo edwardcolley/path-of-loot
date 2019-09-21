@@ -5,15 +5,27 @@ export class NavBar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isOpen: false
+      isOpen: false,
+      cart: []
     };
     this.toggle = this.toggle.bind(this);
+    this.renderCart = this.renderCart.bind(this);
   }
 
   toggle() {
     this.setState({
       isOpen: !this.state.isOpen
     });
+  }
+
+  renderCart() {
+    var cartQuantityArray = [];
+    for (var key in this.props.cartItemCount) {
+      cartQuantityArray.push(this.props.cartItemCount[key]['quantity']);
+    }
+    console.log('cartQuantityArray: ', cartQuantityArray);
+    const totalQuantity = cartQuantityArray.reduce((accumulator, currentValue) => accumulator + parseInt(currentValue), 0);
+    return totalQuantity;
   }
 
   render() {
@@ -30,7 +42,7 @@ export class NavBar extends React.Component {
               <NavLink href="#" onClick={() => this.props.onClick('cart', {})}>Checkout Cart <span className="sr-only">(current)</span></NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="#"><i className="fas fa-shopping-cart" onClick={() => this.props.onClick('cart', {})}> {this.props.cartItemCount}</i></NavLink>
+              <NavLink href="#"><i className="fas fa-shopping-cart" onClick={() => this.props.onClick('cart', {})}> {this.renderCart()}</i></NavLink>
             </NavItem>
           </Nav>
         </Collapse>
