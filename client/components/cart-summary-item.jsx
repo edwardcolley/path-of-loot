@@ -27,7 +27,6 @@ export class CartSummaryItem extends React.Component {
   // }
 
   render() {
-    console.log(this.props.input);
     const price = '$' + ((this.props.input.price / 100).toFixed(2));
     return (
       <React.Fragment>

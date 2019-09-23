@@ -23,7 +23,6 @@ export class CartSummary extends React.Component {
   }
 
   render() {
-    console.log('this.props: ', this.props);
     // var cartArray = Object.keys(this.props.cart)
     // console.log('cart-summary: this.props.cart: ', this.props.cart);
     // if (cartArray === 0) {
@@ -44,13 +43,11 @@ export class CartSummary extends React.Component {
     // Already used ---> const totalItemPrices = this.props.cart.reduce((accumulator, currentValue) => accumulator + parseInt(currentValue.price), 0);
     // Already used ---> const priceTotalInDollars = '$' + ((totalItemPrices / 100).toFixed(2));
     var priceArray = [];
-    console.log('priceArray.length: ', priceArray.length);
     for (var key in this.props.cart) {
       priceArray.push(this.props.cart[key]['price']);
     }
     let totalItemPrices = priceArray.reduce((accumulator, currentValue) => accumulator + parseInt(currentValue), 0);
     const priceTotalInDollars = '$' + ((totalItemPrices / 100).toFixed(2));
-    console.log(priceTotalInDollars);
     return (
       <React.Fragment>
         <Row className="poeBanner mt-3 justify-content-center">

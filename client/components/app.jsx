@@ -61,7 +61,7 @@ export default class App extends React.Component {
         return response.json();
       })
       .then(myJson => {
-        var prevState = { ...this.state.cart };
+        // var prevState = { ...this.state.cart };
         for (var i = 0; i <= myJson.length - 1; i++) {
           // prevState = { ...this.state.cart };
           this.setState({
@@ -90,37 +90,46 @@ export default class App extends React.Component {
     })
       .then(response => response.json())
       .then(myJson => {
-        // console.log('this.state.productid.', this.state.cart[product.id]['quantity']);
         var prevState = { ...this.state.cart };
-        var itemId = myJson.item.id;
         if (this.state.cart[product.id]) {
           var newQuantity = parseInt(this.state.cart[product.id]['quantity']) + 1;
           this.setState({
             cart: {
               ...prevState,
-              [`${itemId}`]: {
+              [product.id]: {
                 quantity: newQuantity,
                 name: myJson.item.name,
-                image: myJson.item.image
+                cart_id: myJson.item.cart_id,
+                image: myJson.item.images[0],
+                price: myJson.item.price,
+                product_id: product.id,
+                shortDescription: myJson.item.shortDescription
               }
             }
+          }, () => {
+            console.log(this.state.cart);
           });
         } else {
           this.setState({
             cart: {
               ...prevState,
-              [`${itemId}`]: {
+              [product.id]: {
                 quantity: 1,
                 name: myJson.item.name,
-                image: myJson.item.image
+                cart_id: myJson.item.cart_id,
+                image: myJson.item.images[0],
+                price: myJson.item.price,
+                product_id: product.id,
+                shortDescription: myJson.item.shortDescription
               }
             }
+          }, () => {
+            console.log(this.state.cart);
           });
-          
+
         }
       })
       .catch(error => console.error('Error: ', error));
-      console.log('this.addtocart this.state.cart: ', this.state.cart);
   }
 
   deleteFromCart(product) {
@@ -130,25 +139,34 @@ export default class App extends React.Component {
       headers: { 'Content-Type': 'application/json' }
     })
       .then(myJson => {
-        if (product.quantity === 1) {
-          this.setState({
-            cart: {
-              [product.id]: null
+        var prevState = { ...this.state.cart };
+        if (product['quantity'] === 1) {
+          var newState = {};
+          for (var key in this.state.cart) {
+            if (key != [product.product_id]) {
+              newState[key] = this.state.cart[key];
             }
+          }
+          this.setState({
+            cart: newState
           });
         } else {
+          var newQuantity = parseInt(this.state.cart[product.product_id]['quantity']) - 1;
           this.setState({
             cart: {
-              [product.id]: {
-                name: [product.name],
-                quantity: [product.quantity] - 1
+              ...prevState,
+              [product.product_id]: {
+                quantity: newQuantity,
+                name: product.name,
+                cart_id: product.cart_id,
+                image: product.image,
+                price: product.price,
+                product_id: product.product_id,
+                shortDescription: product.shortDescription
               }
             }
           });
         }
-
-        // const newCartArray = this.state.cart.filter(incart => incart.cart_id !== product.cart_id);
-        // this.setState({ cart: newCartArray });
       })
       .catch(error => console.error('Error: ', error));
   }
@@ -168,7 +186,6 @@ export default class App extends React.Component {
   }
 
   render() {
-    console.log('this.state.cart: ', this.state.cart);
     if (this.state.view.name === 'catalog') {
       return (
         <div>

@@ -33,17 +33,17 @@ if ($method == 'GET') {
 
   $query = "SELECT * FROM `cart` WHERE product_id = $itemConverted->id";
   $queryReturn = mysqli_query($conn, $query);
-  $numRows = mysqli_num_rows($queryReturn);
+  $cartItem = mysqli_fetch_assoc($queryReturn);
   
-  if ($numRows == 1){
+  if ($cartItem !== null){
     $sql =  "UPDATE `cart` 
                 SET `quantity` = `quantity` + 1 
                 WHERE `product_id` = $itemConverted->id";
   
     $return_value = mysqli_query($conn, $sql);
-    $cart_id = mysqli_insert_id($conn);
+    // $cart_id = mysqli_insert_id($conn);
   
-    $itemConverted->cart_id = $cart_id;
+    $itemConverted->cart_id = $cartItem["id"];
   
     print(json_encode([
         'success' => $return_value,
@@ -68,47 +68,47 @@ if ($method == 'GET') {
 
   $itemConverted = json_decode($item);
 
-  $queryDelete = "SELECT `quantity` FROM `cart` WHERE product_id = $itemConverted->id";
+  $queryDelete = "SELECT `quantity` FROM `cart` WHERE product_id = $itemConverted->product_id";
   $quantityQuery = mysqli_query($conn, $queryDelete);
   
   $value = mysqli_fetch_array($quantityQuery);
 
-  if ($value['quantity'] > 1){
-    $sql =  "UPDATE `cart` 
-                SET `quantity` = `quantity` - 1 
-                WHERE `product_id` = $itemConverted->id";
-  
-    $return_value = mysqli_query($conn, $sql);
-    $cart_id = mysqli_insert_id($conn);
-  
-    $itemConverted->cart_id = $cart_id;
-  
-    print(json_encode([
-        'success' => $return_value,
-        'item' => $itemConverted
-    ]));
-
-    if(!$return_value) {
-      throw new Exception('Error: no deletion occured: '. mysqli_error($conn));
-    } 
-  } else {
-    $itemConverted = json_decode($item);
-    $query = "DELETE FROM `cart` WHERE `id` = $itemConverted->id";
+    if ($value['quantity'] > 1){
+      $sql =  "UPDATE `cart` 
+                  SET `quantity` = `quantity` - 1 
+                  WHERE `product_id` = $itemConverted->product_id";
     
-  
-    $return_value = mysqli_query($conn, $query);
-    $cart_id = mysqli_insert_id($conn);
-  
-    $itemConverted->cart_id = $cart_id;
-  
-    print(json_encode([
-        'success' => $return_value,
-        'item' => $itemConverted
-    ]));
-  
-    if(!$return_value) {
-      throw new Exception('Error: no deletion occured: '. mysqli_error($conn));
-    } 
+      $return_value = mysqli_query($conn, $sql);
+      $cart_id = mysqli_insert_id($conn);
+    
+      $itemConverted->cart_id = $cart_id;
+    
+      print(json_encode([
+          'success' => $return_value,
+          'item' => $itemConverted
+      ]));
+
+      if(!$return_value) {
+        throw new Exception('Error: no deletion occured: '. mysqli_error($conn));
+      } 
+    } else {
+      $itemConverted = json_decode($item);
+      $query = "DELETE FROM `cart` WHERE `product_id` = $itemConverted->product_id";
+      
+    
+      $return_value = mysqli_query($conn, $query);
+      $cart_id = mysqli_insert_id($conn);
+    
+      $itemConverted->cart_id = $cart_id;
+    
+      print(json_encode([
+          'success' => $return_value,
+          'item' => $itemConverted
+      ]));
+    
+      if(!$return_value) {
+        throw new Exception('Error: no deletion occured: '. mysqli_error($conn));
+      } 
   }
 
 
