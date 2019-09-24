@@ -1,7 +1,7 @@
 import React from 'react';
 import { Carousel, CarouselItem, CarouselControl, CarouselIndicators } from 'reactstrap';
 
-export class ImageCarousel extends React.Component {
+export class LandingPageCarousel extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -46,6 +46,9 @@ export class ImageCarousel extends React.Component {
   }
 
   render() {
+    const carouselStyle = {
+      padding: 0 + 'px !important'
+    };
     const { activeIndex } = this.state;
     const slides = this.props.images.map((image, input) => {
       return (
@@ -54,13 +57,13 @@ export class ImageCarousel extends React.Component {
           onExited = {this.onExited}
           key = {input}
         >
-          <img height="400" width="100%" className="shadow p-3 mb-5 bg-dark rounded" src={image} />
+          <img height="300" width="100%" className="shadow p-3 mb-5 bg-white rounded noPadding" src={image.path} />
         </CarouselItem>
       );
     });
 
     return (
-      <Carousel
+      <Carousel style={carouselStyle} className="landingCarousel"
         activeIndex={activeIndex}
         next={this.next}
         previous={this.previous}

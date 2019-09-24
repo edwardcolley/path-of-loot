@@ -5,12 +5,14 @@ import ProductDetails from './product-details';
 import { CartSummary } from './cart-summary';
 import { CheckoutForm } from './checkout-form';
 import { NavBar } from './navbar';
+import { LandingPageCarousel } from './landing-page-crousel';
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       products: [],
+      adverts: [],
       view: {
         name: 'catalog',
         params: {}
@@ -21,6 +23,7 @@ export default class App extends React.Component {
     this.addToCart = this.addToCart.bind(this);
     this.deleteFromCart = this.deleteFromCart.bind(this);
     this.placeOrder = this.placeOrder.bind(this);
+    this.getAdverts = this.getAdverts.bind(this);
   }
 
   placeOrder(shippingInformation) {
@@ -55,15 +58,25 @@ export default class App extends React.Component {
       });
   }
 
+  getAdverts() {
+    fetch('/api/adverts.php')
+      .then(response => {
+        return response.json();
+      })
+      .then(myJson => {
+        this.setState({
+          adverts: myJson
+        });
+      });
+  }
+
   getCartItems() {
     fetch('/api/cart.php')
       .then(response => {
         return response.json();
       })
       .then(myJson => {
-        // var prevState = { ...this.state.cart };
         for (var i = 0; i <= myJson.length - 1; i++) {
-          // prevState = { ...this.state.cart };
           this.setState({
             cart: {
               ...this.state.cart,
@@ -183,15 +196,20 @@ export default class App extends React.Component {
   componentDidMount() {
     this.getProducts();
     this.getCartItems();
+    this.getAdverts();
   }
 
   render() {
+    console.log('state: ', this.state);
     if (this.state.view.name === 'catalog') {
       return (
         <div>
           <NavBar onClick={this.setView} cartItemCount={this.state.cart}/>
           <div className="container-fluid">
-            <Header />
+            {/* <Header /> */}
+            {this.state.adverts.length !== 0 &&
+            <LandingPageCarousel images={this.state.adverts}/>
+            }
             <ProductList onClick={this.setView} products={this.state.products}/>
           </div>
         </div>

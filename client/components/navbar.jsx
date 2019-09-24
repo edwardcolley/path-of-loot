@@ -30,8 +30,8 @@ export class NavBar extends React.Component {
   render() {
     return (
       <Navbar className="navbar navbar-expand-lg navbar-dark bg-dark">
-        <NavbarBrand className="text-white"><i className="fas fa-store-alt" onClick={() => this.props.onClick('catalog', {})}/> Path of Trading</NavbarBrand>
-        <NavbarToggler onClick={this.toggle} />
+        <NavbarBrand className="navbarStyle"><img height="40" src="/images/poeicon3.jpg" className="mt-1" onClick={() => this.props.onClick('catalog', {})}/> Path of Trading</NavbarBrand>
+        <NavbarToggler onClick={this.toggle}/>
         <Collapse isOpen={this.state.isOpen} navbar>
           <Nav className="ml-auto" navbar>
             <NavItem>
@@ -46,6 +46,23 @@ export class NavBar extends React.Component {
           </Nav>
         </Collapse>
       </Navbar>
+    //       <nav class="navbar navbar-expand-lg navbar bg">
+    //   <a class="navbar-brand" href="#">Brand Goes Here</a>
+    //   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    //     <span class="navbar-toggler-icon"></span>
+    //   </button>
+
+    //   <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    //     <ul class="navbar-nav">
+    //       <li class="nav-item active">
+    //         <a class="nav-link" href="#">Current Page Link <span class="sr-only">(current)</span></a>
+    //       </li>
+    //       <li class="nav-item">
+    //         <a class="nav-link" href="#">Another Page Link</a>
+    //       </li>
+    //     </ul>
+    //   </div>
+    // </nav>
     );
   }
 

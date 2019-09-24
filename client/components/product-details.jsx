@@ -6,9 +6,12 @@ export default class ProductDetails extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      product: null
+      product: null,
+      value: 1
     };
     this.fixPrice = this.fixPrice.bind(this);
+    this.increment = this.increment.bind(this);
+    this.decrement = this.decrement.bind(this);
   }
 
   componentDidMount() {
@@ -23,12 +26,24 @@ export default class ProductDetails extends React.Component {
       });
   }
 
+  increment() {
+    this.setState(prevState => {
+      ++prevState.value;
+    });
+  }
+
+  decrement() {
+    this.setState(prev);
+  }
+
   fixPrice() {
     const price = '$' + ((this.state.product.price / 100).toFixed(2));
     return price;
   }
 
   render() {
+    console.log('this.state.product: ', this.state.product);
+    console.log('this.props.product: ', this.props.product);
     if (!this.state.product) return null;
     return (
       <div>
@@ -45,17 +60,16 @@ export default class ProductDetails extends React.Component {
 
           <Col lg={{ size: 4, offset: 1 }} className="productDescription">
             <h2 className="font-weight-bold text-white">{this.state.product.name} <span className="badge badge-info">{this.fixPrice()}</span></h2>
-            <p className="font-weight-bold text-white mt-4">{this.state.product.shortDescription}</p>
+            <p className="font-weight-bold text-white text-center mt-4">{this.state.product.shortDescription}</p>
             <Row className="justify-content-md-center">
-              <Col md={{ size: 6 }}>
-                <button onClick={() => this.props.addToCart(this.state.product)}type="button" className="btn btn-primary btn-lg mx-auto">Add to Cart</button>
+              <Col md={{ size: 6, offset: 1 }}>
+                <button onClick={() => this.props.addToCart(this.state.product)}type="button" className="btn btn-primary mx-auto">Add to Cart</button>
+                <br/>
               </Col>
             </Row>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <p>{this.state.product.longDescription}</p>
+            <br/>
+            <p className="mt-2 mb-4 text-white">{this.state.product.longDescription}</p>
+            <br/>
           </Col>
         </Row>
       </div>

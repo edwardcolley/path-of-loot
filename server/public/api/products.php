@@ -1,5 +1,4 @@
 <?php
-
 header('Content-Type: application/json');
 require('functions.php');
 
@@ -9,7 +8,7 @@ startUp();
 require_once('db_connection.php');
 
 if (empty($_GET['id'])) {
-  $query = "SELECT p.id, p.name, p.price, p.shortDescription, 
+  $query = "SELECT p.id, p.name, p.price, p.shortDescription, p.longDescription, 
             (SELECT `image` FROM `images` WHERE `product_id` = p.id LIMIT 1) AS `image`
             FROM `products` AS p";
   $result = mysqli_query($conn, $query);
@@ -30,7 +29,7 @@ if (empty($_GET['id'])) {
 
 } else {
   $id = $_GET['id'];
-  $query = "SELECT p.id, p.name, p.price, p.shortDescription, 
+  $query = "SELECT p.id, p.name, p.price, p.shortDescription, p.longDescription,
 	              GROUP_CONCAT(i.image) AS images
 	              FROM `products` AS p
 	              JOIN `images` AS i 
