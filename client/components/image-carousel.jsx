@@ -54,7 +54,7 @@ export class ImageCarousel extends React.Component {
           onExited = {this.onExited}
           key = {input}
         >
-          <img height="400" width="100%" className="shadow p-3 mb-5 bg-dark rounded" src={image} />
+          <img height="350" width="90%" className="shadow p-3 mb-5 bg-dark rounded" src={image} />
         </CarouselItem>
       );
     });

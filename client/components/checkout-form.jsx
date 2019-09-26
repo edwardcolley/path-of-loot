@@ -44,7 +44,11 @@ export class CheckoutForm extends React.Component {
   }
 
   render() {
-    const totalItemPrices = this.props.cart.reduce((accumulator, currentValue) => accumulator + parseInt(currentValue.price), 0);
+    var priceArray = [];
+    for (var key in this.props.cart) {
+      priceArray.push(this.props.cart[key]['price']);
+    }
+    let totalItemPrices = priceArray.reduce((accumulator, currentValue) => accumulator + parseInt(currentValue), 0);
     const priceTotalInDollars = '$' + ((totalItemPrices / 100).toFixed(2));
     return (
       <React.Fragment>
