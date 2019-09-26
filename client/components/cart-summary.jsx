@@ -16,10 +16,10 @@ export class CartSummary extends React.Component {
   }
 
   renderCart() {
-    var cartArray = Object.keys(this.props.cart);
-    return cartArray.map((item, key) => {
+    var idArray = Object.keys(this.props.cart);
+    return idArray.map((id, index) => {
       return (
-        <CartSummaryItem delete={this.props.delete} update={this.props.update} key={key} input={this.props.cart[item]} />
+        <CartSummaryItem delete={this.props.delete} update={this.props.update} key={id} input={this.props.cart[id]} />
       );
     });
   }
@@ -48,7 +48,8 @@ export class CartSummary extends React.Component {
 
     var priceArray = [];
     for (var key in this.props.cart) {
-      priceArray.push(this.props.cart[key]['price']);
+      var itemTotal = (this.props.cart[key]['price']) * parseInt(this.props.cart[key]['quantity']);
+      priceArray.push(itemTotal);
     }
     let totalItemPrices = priceArray.reduce((accumulator, currentValue) => accumulator + parseInt(currentValue), 0);
     const priceTotalInDollars = '$' + ((totalItemPrices / 100).toFixed(2));

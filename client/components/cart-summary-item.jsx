@@ -28,10 +28,19 @@ export class CartSummaryItem extends React.Component {
       removed: true
     });
     this.props.delete(this.props.input);
+
   }
 
+  // componentDidUpdate() {
+  //   this.setState({
+  //     value: this.props.input.quantity
+  //   });
+  // }
+
   render() {
-    const price = '$' + ((this.props.input.price / 100).toFixed(2));
+    // console.log('cart-summary-item value: ', this.state.value, this.props.input.name);
+    const unitPrice = '$' + ((this.props.input.price / 100).toFixed(2));
+    const totalPrice = '$' + ((this.state.value) * (this.props.input.price / 100)).toFixed(2);
     return (
     // <React.Fragment>
     //   {this.state.removed === false &&
@@ -77,14 +86,14 @@ export class CartSummaryItem extends React.Component {
         <td>
           <Row className="text-center mt-3">
             <Col>
-              {price}
+              {unitPrice}
             </Col>
           </Row>
         </td>
         <td>
           <Row className="text-center mt-3">
             <Col>
-              {price}
+              {totalPrice}
             </Col>
           </Row>
         </td>

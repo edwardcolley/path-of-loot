@@ -104,6 +104,7 @@ export default class App extends React.Component {
       method: 'POST',
       body: JSON.stringify({
         id: parseInt(product.id),
+        name: product.name,
         quantity: quantity,
         images: product.images,
         longDescription: product.longDescription,
