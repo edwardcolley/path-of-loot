@@ -73,7 +73,10 @@ export default class App extends React.Component {
   }
 
   getCartItems() {
-    fetch('/api/cart.php')
+    fetch('/api/cart.php', {
+      method: 'GET',
+      credentials: 'include'
+    })
       .then(response => {
         return response.json();
       })
@@ -102,6 +105,7 @@ export default class App extends React.Component {
     console.log('product: ', product);
     fetch('/api/cart.php', {
       method: 'POST',
+      credentials: 'include',
       body: JSON.stringify({
         id: parseInt(product.id),
         name: product.name,
@@ -165,6 +169,7 @@ export default class App extends React.Component {
     console.log('product: ', product);
     fetch('/api/cart.php', {
       method: 'PUT',
+      credentials: 'include',
       body: JSON.stringify({
         id: parseInt(product.product_id),
         quantity: parseInt(quantity),
@@ -232,6 +237,7 @@ export default class App extends React.Component {
   deleteFromCart(product) {
     fetch('/api/cart.php', {
       method: 'DELETE',
+      credentials: 'include',
       body: JSON.stringify(product),
       headers: { 'Content-Type': 'application/json' }
     })
