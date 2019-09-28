@@ -8,11 +8,13 @@ export default class ProductDetails extends React.Component {
     super(props);
     this.state = {
       product: null,
-      value: 1
+      value: 1,
+      modal: false
     };
     this.increment = this.increment.bind(this);
     this.decrement = this.decrement.bind(this);
     this.fixPrice = this.fixPrice.bind(this);
+    this.toggleModal = this.toggleModal.bind(this);
   }
 
   increment() {
@@ -40,6 +42,17 @@ export default class ProductDetails extends React.Component {
   fixPrice() {
     const price = '$' + ((this.state.product.price / 100).toFixed(2));
     return price;
+  }
+
+  toggleModal() {
+    console.log('this is the value: ', this.state.value);
+    if (this.state.modal === false) {
+      this.props.addToCart(this.state.product, this.state.value);
+    }
+    debugger;
+    this.setState(prevState => ({
+      modal: !prevState.modal
+    }));
   }
 
   render() {
@@ -72,7 +85,7 @@ export default class ProductDetails extends React.Component {
               </Row>
               <Row className="justify-content-md-center">
                 <Col md={{ size: 6, offset: 1 }}>
-                  <button onClick={() => this.props.addToCart(this.state.product, this.state.value)}type="button" className="btn btn-primary mx-auto">Add to Cart</button>
+                  <button onClick={this.toggleModal} type="button" className="btn btn-primary mx-auto">Add to Cart</button>
                   <br/>
                 </Col>
               </Row>
@@ -80,15 +93,15 @@ export default class ProductDetails extends React.Component {
               <p className="mt-2 mb-4 text-white longDescription">{this.state.product.longDescription}</p>
               <br/>
             </Col>
-            {/* <Modal isOpen={this.state.modalIsOpen}>
-              <ModalHeader>
+            <Modal isOpen={this.state.modal}>
+              <ModalHeader className="text-center">
               Product has been added to cart!
               </ModalHeader>
               <ModalFooter>
                 <Button onClick={this.toggleModal} color="info">Keep Shopping</Button>
-                <Button onClick={this.handleSetViewCart} color="primary">Go To Cart</Button>
+                <Button onClick={() => { this.props.back('cart', {}); } } color="primary">Go To Cart</Button>
               </ModalFooter>
-            </Modal> */}
+            </Modal>
           </Row>
         </Col>
       </Row>

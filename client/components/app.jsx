@@ -101,8 +101,8 @@ export default class App extends React.Component {
   }
 
   addToCart(product, quantity) {
-    console.log('quantity: ', quantity);
-    console.log('product: ', product);
+    console.log('addtocart did run');
+    console.log(product, quantity);
     fetch('/api/cart.php', {
       method: 'POST',
       credentials: 'include',

@@ -1,25 +1,33 @@
 import React from 'react';
 import { CartSummaryItem } from './cart-summary-item';
-import { Container, Row, Col, Button, Table } from 'reactstrap';
-import { Quantity } from './quantity';
+import { Container, Row, Col, Button, Table, Modal, ModalHeader, ModalFooter } from 'reactstrap';
 
 export class CartSummary extends React.Component {
-  // constructor(props) {
-  //   super(props);
+  constructor(props) {
+    super(props);
+    this.state = {
+      modal: false
+    };
+    this.toggleModal = this.toggleModal.bind(this);
+  }
 
-  //   this.renderCart = this.renderCart.bind(this);
-  // }
-
-  convertObject() {
-    var cartArray = Object.keys(this.props.cart);
-    this.renderCart(cartArray);
+  toggleModal() {
+    // if (this.state.modal === false) {
+    //   this.props.addToCart(this.state.product, this.state.value);
+    // }
+    this.setState(prevState => ({
+      modal: !prevState.modal
+    }));
+    // this.setState({
+    //   modal: !this.state.modal
+    // });
   }
 
   renderCart() {
     var idArray = Object.keys(this.props.cart);
     return idArray.map((id, index) => {
       return (
-        <CartSummaryItem delete={this.props.delete} update={this.props.update} key={id} input={this.props.cart[id]} />
+        <CartSummaryItem delete={this.props.delete} modal={this.toggleModal} update={this.props.update} key={id} input={this.props.cart[id]} />
       );
     });
   }
@@ -115,6 +123,14 @@ export class CartSummary extends React.Component {
             </Container>
           </Col>
         </Row>
+        <Modal isOpen={this.state.modal}>
+          <ModalHeader className="text-center">
+              Cart has been updated!
+          </ModalHeader>
+          <ModalFooter>
+            <Button onClick={this.toggleModal} color="info">Close</Button>
+          </ModalFooter>
+        </Modal>
       </React.Fragment>
       // <React.Fragment>
       //   <Table responsive size="sm" className="tableStyle">

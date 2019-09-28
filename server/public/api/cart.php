@@ -77,7 +77,7 @@ if ($method == 'GET') {
   if ($cartItem !== null){
     $sql =  "UPDATE `cart` 
                 SET `quantity` = `quantity` + $itemConverted->quantity,
-                    `cart_session` = $sessionID
+                    `sessionID` = $sessionID
                 WHERE `product_id` = $itemConverted->id";
   
     $return_value = mysqli_query($conn, $sql);

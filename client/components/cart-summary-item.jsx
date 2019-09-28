@@ -11,6 +11,7 @@ export class CartSummaryItem extends React.Component {
     };
     this.increment = this.increment.bind(this);
     this.decrement = this.decrement.bind(this);
+    this.updateItem = this.updateItem.bind(this);
   }
 
   increment() {
@@ -29,6 +30,12 @@ export class CartSummaryItem extends React.Component {
     });
     this.props.delete(this.props.input);
 
+  }
+
+  updateItem() {
+    console.log('cart item props: ', this.props);
+    this.props.update(this.props.input, this.state.value);
+    this.props.modal();
   }
 
   // componentDidUpdate() {
@@ -107,7 +114,7 @@ export class CartSummaryItem extends React.Component {
         <td>
           <Row className="text-center">
             <Col>
-              <i className="far fa-edit fa-lg mt-3 trashIcon" onClick={() => { this.props.update(this.props.input, this.state.value); }}></i>
+              <i className="far fa-edit fa-lg mt-3 trashIcon" onClick={this.updateItem}></i>
             </Col>
           </Row>
         </td>
