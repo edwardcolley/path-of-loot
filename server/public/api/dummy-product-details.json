@@ -1,8 +1,45 @@
+[
 {
   "id": 1,
   "name": "Shake Weight",
   "price": 2999,
-  "image": "https://bit.ly/2JtVNE6",
+  "image": ["https://bit.ly/2JtVNE6", "https://i.chzbgr.com/full/8805127936/hF06F32FC/", "https://img.grouponcdn.com/deal/3559743965a64e778210045cba8974a8/a8/v1/c700x420.jpg" ],
   "shortDescription": "Dynamic Inertia technology ignites muscles in arms, shoulders, and chest.",
   "longDescription": "Shaking up the way you work out, the Shake Weight is a revolution in strength training. Boasting a legion of devotees who enthusiastically confirm the Shake Weight's claim that it shapes and tones the upper body, this product is hard to ignore.\nThe way it works is this: a special pulsating dumbbell with dynamic inertia technology increases upper body muscle activity by 300 percent compared to traditional weights as you shake the 5-lb weight several different ways. This repetitive shaking stimulates muscle toning and adds shape to your upper arms, chest, and shoulders.\nThe Upper Body Sculpting DVD shows you the proper way to use the Shake Weight so you see the most benefits. It works in only six minutes a day, though if you use it more often, you're likely to see results sooner."
+},
+{
+  "id": 2,
+  "name": "ShamWow",
+  "price": 2595,
+  "image": ["https://bit.ly/2w9C3Nm", "https://cdn.instructables.com/FOM/S4BJ/GOPIMAHI/FOMS4BJGOPIMAHI.LARGE.jpg", "https://i.chzbgr.com/full/2098377984/h5E9748B7/" ],
+  "shortDescription": "It's like a chamois, towel, and sponge, all in one! Soaks up to 10x it's weight in any liquid!"
+},
+{
+  "id": 3,
+  "name": "Snuggie",
+  "price": 2900,
+  "image": ["https://bit.ly/2LVHYAk", "https://www.yourwdwstore.net/assets/images/4/40000/5000/200/45264-s3.jpg", "http://www.mladipula.org/aura/TV-Snuggie-Blanket-67-China-Home-Textile-Blanket.jpg"],
+  "shortDescription": "Super-Soft Fleece with pockets! One Size fits all Adults! Keeps you Warm & Your Hands-Free!"
+},
+{
+  "id": 4,
+  "name": "Wax Vac",
+  "price": 999,
+  "image": ["https://bit.ly/2EjCU2a", "https://www.introbd.com/wp-content/uploads/2018/08/WAX-VAC.jpg", "http://www.bookthewish.com/images/BTW-Wax-Vac-Gentle-&-Effective-Cleaner-Img3-800X800.jpg"],
+  "shortDescription": "Gentle way to remove ear wax. Safe and hygienic. Reduces the risk of painful infections."
+},
+{
+  "id": 5,
+  "name": "Ostrich Pillow",
+  "price": 9900,
+  "image": ["https://bit.ly/2VD80b8", "https://pre00.deviantart.net/743a/th/pre/i/2016/357/2/d/i_got_my_dog_an__ostrich_pillow_by_russianannab-daslvmw.jpg", "https://i.redd.it/anizqx6zjs301.jpg"],
+  "shortDescription": "Create your own snugly space in the world and feel-good anywhere with the ultimate cocoon pillow."
+},
+{
+  "id": 6,
+  "name": "Tater Mitts",
+  "price": 830,
+  "image": ["https://bit.ly/2w9EmzO", "https://www.dhresource.com/0x0s/f2-albu-g6-M00-1A-C1-rBVaR1rkH0aAdI6WAAzkQkK6Ogk018.jpg/1-pair-new-waterproof-quick-peeling-tater.jpg"],
+  "shortDescription": "8 Seconds is All You Need with Tater Mitts Quickly and easily prepare all your favorite potato dishes with Tater Mitts."
 }
+]

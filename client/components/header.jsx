@@ -1,13 +1,14 @@
 import React from 'react';
+import { Row } from 'reactstrap';
 
 export class Header extends React.Component {
 
   render() {
     return (
-      <div className="row">
-        <h1 className="col-11 display-2 font-weight-bold text-warning text-center mt-4"><img src="/images/shoppingcart.png"></img>Wicked Sales</h1>
-        <h5 className="col-1"><span className="badge badge-primary mt-3" onClick={() => this.props.onClick('cart', {})}><img height="30" width="30" src="/images/shopping.png"/>{this.props.cartItemCount}</span></h5>
-      </div>
+      <Row className="poeBanner mt-3 justify-content-center">
+        <img height="100" src="/images/poeicon3.jpg" className="mt-3"></img>
+        <h1 className="poeHeaderFont display-3 font-weight-bold text-center mt-5">Path of Trading</h1>
+      </Row>
     );
   }
 
