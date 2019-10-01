@@ -44,10 +44,10 @@ export class CartSummary extends React.Component {
             </Row>
             <Container>
               <Row className="justify-content-around">
-                <Button color="secondary" onClick={() => this.props.back('catalog', {})} type="button" className="mt-5 mb-3">Shop</Button>
+                <Button size="sm" color="secondary" onClick={() => this.props.back('catalog', {})} type="button" className="mt-5 mb-3">Shop</Button>
                 <h2 className="mt-5 text-white">Total: {priceTotalInDollars}</h2>
                 {priceTotalInDollars.length > 0 &&
-               <Button color="primary" onClick={() => this.props.back('checkout', {})} type="button" className="mt-5 mb-3">Checkout</Button>
+               <Button size="sm" color="primary" onClick={() => this.props.back('checkout', {})} type="button" className="mt-5 mb-3">Checkout</Button>
                 }
               </Row>
               <Row className="justify-content-center">

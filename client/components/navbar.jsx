@@ -30,7 +30,7 @@ export class NavBar extends React.Component {
   render() {
     return (
       <Navbar className="navbar navbar-expand-lg navbar-dark bg-dark">
-        <NavbarBrand className="navbarStyle"><img height="40" src="/images/poeicon3.jpg" className="mt-1" onClick={() => this.props.onClick('catalog', {})}/> Path of Trading</NavbarBrand>
+        <NavbarBrand className="navbarStyle"><img height="40" src="/images/poeicon3.jpg" className="mt-1" onClick={() => this.props.onClick('catalog', {})}/> Path of Currency</NavbarBrand>
         <NavbarToggler onClick={this.toggle}/>
         <Collapse isOpen={this.state.isOpen} navbar>
           <Nav className="ml-auto" navbar>
