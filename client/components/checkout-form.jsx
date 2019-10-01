@@ -104,8 +104,7 @@ export class CheckoutForm extends React.Component {
                   <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                     <ModalHeader toggle={this.toggle}>Modal title</ModalHeader>
                     <ModalBody>
-                      <p>Disclaimer: This site is for example purposes only <br/>
-                       No information was stored.</p>
+                      <p>Thank you! No purchase has been processed</p>
                       <p>Name: {this.state.name}</p>
                       <p>Payment: {this.state.creditCard}</p>
                       <p>Shipping Address: {this.state.shippingAddress}</p>

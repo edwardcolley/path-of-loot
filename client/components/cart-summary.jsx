@@ -73,7 +73,7 @@ export class CartSummary extends React.Component {
         </Row>
         <Modal isOpen={this.state.modal}>
           <ModalHeader className="text-center">
-              Cart has been updated!
+              Item has been updated!
           </ModalHeader>
           <ModalFooter>
             <Button onClick={this.toggleModal} color="info">Close</Button>

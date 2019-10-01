@@ -7,7 +7,7 @@ export class ProductList extends React.Component {
   renderItems() {
     return this.props.products.map(input => {
       return (
-        <ProductListItem onClick={() => this.props.onClick(input.name, input.id)} key={input.id} input={input} />
+        <ProductListItem onClick={() => this.props.onClick('product details', input.id)} key={input.id} input={input} />
       );
     });
   }

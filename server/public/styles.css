@@ -16,8 +16,22 @@ body {
     cursor: pointer;
 }
 
-.poeBanner {
-    /* background-color: rgba(0, 0, 0, 0.618); */
+.landingPage {
+  height: 100vh;
+  width: 100%;
+  background-image: url('./images/pathofexilebeach.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  position: absolute;
+}
+
+.disclaimerText {
+  position: absolute;
+  bottom: 1%;
+  right: 1%;
+  font-weight: 700;
 }
 
 .navbarStyle,
