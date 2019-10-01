@@ -7,6 +7,7 @@ import { CartSummary } from './cart-summary';
 import { CheckoutForm } from './checkout-form';
 import { NavBar } from './navbar';
 import { LandingPageCarousel } from './landing-page-crousel';
+import { LandingPage } from './landingpage';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -15,7 +16,7 @@ export default class App extends React.Component {
       products: [],
       adverts: [],
       view: {
-        name: 'catalog',
+        name: '',
         params: {}
       },
       cart: {}
@@ -248,15 +249,18 @@ export default class App extends React.Component {
   render() {
     if (this.state.view.name === 'catalog') {
       return (
-        <div>
-          <NavBar onClick={this.setView} cartItemCount={this.state.cart}/>
-          <div className="container-fluid">
-            {this.state.adverts.length !== 0 &&
+        <React.Fragment>
+          <div className="landingPage"></div>
+          <div className="productList">
+            <NavBar onClick={this.setView} cartItemCount={this.state.cart}/>
+            <div className="container-fluid">
+              {this.state.adverts.length !== 0 &&
             <LandingPageCarousel images={this.state.adverts}/>
-            }
-            <ProductList onClick={this.setView} products={this.state.products}/>
+              }
+              <ProductList onClick={this.setView} products={this.state.products}/>
+            </div>
           </div>
-        </div>
+        </React.Fragment>
       );
     } else if (this.state.view.name === 'cart') {
       return (
@@ -272,7 +276,7 @@ export default class App extends React.Component {
           <CheckoutForm back={this.setView} cart={this.state.cart} placeOrder={this.placeOrder}/>
         </div>
       );
-    } else {
+    } else if (this.state.view.name === 'product details') {
       return (
         <div>
           <NavBar onClick={this.setView} cartItemCount={this.state.cart}/>
@@ -280,7 +284,10 @@ export default class App extends React.Component {
             <ProductDetails addToCart={this.addToCart} back={this.setView} id={this.state.view.params} products={this.state.products} />
           </div>
         </div>
-
+      );
+    } else {
+      return (
+        <LandingPage onClick={this.setView}/>
       );
     }
   }
