@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Row, Col } from 'reactstrap';
+import { Button, Row, Col, Modal, ModalHeader, ModalFooter } from 'reactstrap';
 import { Quantity } from './quantity';
 
 export class CartSummaryItem extends React.Component {
@@ -12,6 +12,8 @@ export class CartSummaryItem extends React.Component {
     this.increment = this.increment.bind(this);
     this.decrement = this.decrement.bind(this);
     this.updateItem = this.updateItem.bind(this);
+    this.deleteItem = this.deleteItem.bind(this);
+    this.toggleDeleteModal = this.toggleDeleteModal.bind(this);
   }
 
   increment() {
@@ -33,99 +35,80 @@ export class CartSummaryItem extends React.Component {
   }
 
   updateItem() {
-    console.log('cart item props: ', this.props);
     this.props.update(this.props.input, this.state.value);
     this.props.modal();
   }
 
-  // componentDidUpdate() {
-  //   this.setState({
-  //     value: this.props.input.quantity
-  //   });
-  // }
+  toggleDeleteModal() {
+    this.setState(prevState => ({
+      deleteModal: !prevState.deleteModal
+    }));
+  }
 
   render() {
-    // console.log('cart-summary-item value: ', this.state.value, this.props.input.name);
     const unitPrice = '$' + ((this.props.input.price / 100).toFixed(2));
     const totalPrice = '$' + ((this.state.value) * (this.props.input.price / 100)).toFixed(2);
     return (
-    // <React.Fragment>
-    //   {this.state.removed === false &&
-    //   <div className="card flex-row flex-wrap h-50 w-75 mb-3 shadow">
-    //     <div className="card-header w-25 border-0">
-    //       <img height="200" width="200"src={this.props.input.image} alt="item image" />
-    //     </div>
-    //     <div className="card-block w-75 px-2">
-    //       <Row className="justify-content-end mr-2 mt-2">
-    //         <Button color="secondary" onClick={() => this.deleteItem()}>Remove</Button>
-    //         <p>Ammount: {this.props.input.quantity}</p>
-    //       </Row>
-    //       <Row>
-    //         <Col xs={{ size: 6, offset: 4 }} sm={{ size: 8, offset: 4 }} lg={{ size: 10, offset: 1 }}>
-    //           <h3 className="card-title mt-4 ml-4">{this.props.input.name}</h3>
-    //           <h3 className="ml-4 mt-1"><span className="badge badge-info">{price}</span></h3>
-    //           <p className="card-text ml-4 mt-4 mb-2">{this.props.input.shortDescription}</p>
-    //         </Col>
-    //       </Row>
-    //     </div>
-    //   </div>}
-    //   {this.state.removed === true &&
-    //   <div></div>}
-    // </React.Fragment>
-
-    // below is an attempt at a table
-
-      <tr>
-        <td>
-          <Row className="text-center">
-            <Col>
-              <img height="50" width="50"src={this.props.input.image} alt="item image" />
-            </Col>
-          </Row>
-        </td>
-        <td>
-          <Row className="text-center mt-3">
-            <Col>
-              {this.props.input.name}
-            </Col>
-          </Row>
-        </td>
-        <td>
-          <Row className="text-center mt-3">
-            <Col>
-              {unitPrice}
-            </Col>
-          </Row>
-        </td>
-        <td>
-          <Row className="text-center mt-3">
-            <Col>
-              {totalPrice}
-            </Col>
-          </Row>
-        </td>
-        <td>
-          <Row className="mt-2">
-            <Col>
-              <Quantity increment={this.increment} decrement={this.decrement} quantity={this.state.value} />
-            </Col>
-          </Row>
-        </td>
-        <td>
-          <Row className="text-center">
-            <Col>
-              <i className="far fa-edit fa-lg mt-3 trashIcon" onClick={this.updateItem}></i>
-            </Col>
-          </Row>
-        </td>
-        <td>
-          <Row className="text-center">
-            <Col>
-              <i className="fas fa-trash-alt fa-lg mt-3 trashIcon" onClick={() => this.deleteItem()}></i>
-            </Col>
-          </Row>
-        </td>
-      </tr>
+      <React.Fragment>
+        <tr>
+          <td>
+            <Row className="text-center">
+              <Col>
+                <img height="50" width="50"src={this.props.input.image} alt="item image" />
+              </Col>
+            </Row>
+          </td>
+          <td>
+            <Row className="text-center mt-3">
+              <Col>
+                {this.props.input.name}
+              </Col>
+            </Row>
+          </td>
+          <td>
+            <Row className="text-center mt-3">
+              <Col>
+                {unitPrice}
+              </Col>
+            </Row>
+          </td>
+          <td>
+            <Row className="text-center mt-3">
+              <Col>
+                {totalPrice}
+              </Col>
+            </Row>
+          </td>
+          <td>
+            <Row className="mt-2">
+              <Col>
+                <Quantity increment={this.increment} decrement={this.decrement} quantity={this.state.value} />
+              </Col>
+            </Row>
+          </td>
+          <td>
+            <Row className="text-center">
+              <Col>
+                <i className="far fa-edit fa-lg mt-3 trashIcon" onClick={this.updateItem}></i>
+              </Col>
+            </Row>
+          </td>
+          <td>
+            <Row className="text-center">
+              <Col>
+                <i className="fas fa-trash-alt fa-lg mt-3 trashIcon" onClick={this.toggleDeleteModal}></i>
+              </Col>
+            </Row>
+          </td>
+        </tr>
+        <Modal isOpen={this.state.deleteModal} toggle={this.toggleDeleteModal}>
+          <ModalHeader toggle={this.toggleDeleteModal}>Are you sure you want to remove this?</ModalHeader>
+          <ModalFooter>
+            <Button color="primary" onClick={this.deleteItem}>Remove Item</Button>{' '}
+            <Button color="secondary" onClick={this.toggleDeleteModal}>Cancel</Button>
+          </ModalFooter>
+        </Modal>
+      </React.Fragment>
     );
   }
 

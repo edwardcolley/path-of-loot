@@ -101,8 +101,6 @@ export default class App extends React.Component {
   }
 
   addToCart(product, quantity) {
-    console.log('addtocart did run');
-    console.log(product, quantity);
     fetch('/api/cart.php', {
       method: 'POST',
       credentials: 'include',
@@ -119,13 +117,9 @@ export default class App extends React.Component {
     })
       .then(response => response.json())
       .then(myJson => {
-        console.log('myJson: ', myJson);
         var prevState = { ...this.state.cart };
         if (this.state.cart[product.id]) {
           var newQuantity = parseInt(this.state.cart[product.id]['quantity']) + quantity;
-          console.log('this.state.cart[product.id]: ', this.state.cart[product.id]);
-          console.log('myjson.item.quantity: ', myJson.item.quantity);
-          console.log('newQuantity: ', newQuantity);
           this.setState({
             cart: {
               ...prevState,
@@ -140,7 +134,7 @@ export default class App extends React.Component {
               }
             }
           }, () => {
-            console.log('addtocart this.state.cart: ', this.state.cart);
+            // console.log('addtocart this.state.cart: ', this.state.cart);
           });
         } else {
           this.setState({
@@ -166,7 +160,6 @@ export default class App extends React.Component {
   }
 
   updateCart(product, quantity) {
-    console.log('product: ', product);
     fetch('/api/cart.php', {
       method: 'PUT',
       credentials: 'include',
@@ -182,11 +175,9 @@ export default class App extends React.Component {
     })
       .then(response => response.json())
       .then(myJson => {
-        console.log('myJson returned: ', myJson);
         var quantityVal = parseInt(quantity);
         var prevState = { ...this.state.cart };
         if (quantityVal > 0) {
-          // var newQuantity = parseInt(this.state.cart[product.id]['quantity']) + quantity;
           this.setState({
             cart: {
               ...prevState,
@@ -201,7 +192,7 @@ export default class App extends React.Component {
               }
             }
           }, () => {
-            console.log('updateCart this.state.cart: ', this.state.cart);
+            // console.log('updateCart this.state.cart: ', this.state.cart);
           });
         } else {
           var newState = {};
@@ -213,22 +204,6 @@ export default class App extends React.Component {
           this.setState({
             cart: newState
           });
-          // this.setState({
-          //   cart: {
-          //     ...prevState,
-          //     [product.id]: {
-          //       quantity: quantity,
-          //       name: myJson.item.name,
-          //       cart_id: myJson.item.cart_id,
-          //       image: myJson.item.images[0],
-          //       price: myJson.item.price,
-          //       product_id: product.id,
-          //       shortDescription: myJson.item.shortDescription
-          //     }
-          //   }
-          // }, () => {
-          //   // console.log(this.state.cart);
-          // });
         }
       })
       .catch(error => console.error('Error: ', error));
@@ -271,13 +246,11 @@ export default class App extends React.Component {
   }
 
   render() {
-    console.log('app state: ', this.state);
     if (this.state.view.name === 'catalog') {
       return (
         <div>
           <NavBar onClick={this.setView} cartItemCount={this.state.cart}/>
           <div className="container-fluid">
-            {/* <Header /> */}
             {this.state.adverts.length !== 0 &&
             <LandingPageCarousel images={this.state.adverts}/>
             }

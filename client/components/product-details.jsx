@@ -45,18 +45,15 @@ export default class ProductDetails extends React.Component {
   }
 
   toggleModal() {
-    console.log('this is the value: ', this.state.value);
     if (this.state.modal === false) {
       this.props.addToCart(this.state.product, this.state.value);
     }
-    debugger;
     this.setState(prevState => ({
       modal: !prevState.modal
     }));
   }
 
   render() {
-    console.log('value: ', this.state.value);
     if (!this.state.product) return null;
     return (
       <Row>
