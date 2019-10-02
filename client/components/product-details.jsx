@@ -73,7 +73,7 @@ export default class ProductDetails extends React.Component {
             </Col>
 
             <Col lg={{ size: 4 }} className="productDescription">
-              <h2 className="font-weight-bold text-white text-center">{this.state.product.name} <span className="badge badge-info">{this.fixPrice()}</span></h2>
+              <h2 className="font-weight-bold text-white text-center productDetailsStyle">{this.state.product.name} <span className="badge badge-info">{this.fixPrice()}</span></h2>
               <p className="font-weight-bold text-white text-center mt-4">{this.state.product.shortDescription}</p>
               <Row className="justify-content-md-center">
                 <Col md={{ size: 5 }} className="mb-2">

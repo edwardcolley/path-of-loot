@@ -68,6 +68,16 @@ body {
       height: 54vh;
   } */
 
+
+  .cardHeaderStyle {
+    font-size: .95rem;
+    font-variant: small-caps;
+  }
+
+  .productDetailsStyle {
+    font-variant: small-caps;
+  }
+
   .orderBtn {
       height: 33px;
   }

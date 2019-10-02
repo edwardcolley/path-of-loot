@@ -147,3 +147,16 @@ if(mysqli_affected_rows($conn) !== 0) {
 $cartID = mysqli_insert_id($conn);
 $_SESSION['cartId'] = $cartID; //store it into both cartId and $_SESSION[‘cartId’]
 }
+
+$query = "DELETE FROM `cart` WHERE `sessionID` = $sessionID";
+      
+    
+  $return_value = mysqli_query($conn, $query);
+    
+  print(json_encode([
+    'success' => $return_value,
+  ]));
+    
+  if(!$return_value) {
+    throw new Exception('Error: no deletion occured: '. mysqli_error($conn));
+  }
