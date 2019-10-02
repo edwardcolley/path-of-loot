@@ -45,7 +45,7 @@ export class CartSummary extends React.Component {
             <Container>
               <Row className="justify-content-around">
                 <Button size="sm" color="secondary" onClick={() => this.props.back('catalog', {})} type="button" className="mt-5 mb-3">Shop</Button>
-                <h2 className="mt-5 text-white">Total: {priceTotalInDollars}</h2>
+                <h2 className="mt-5 text-white mobileFontHeader">Total: {priceTotalInDollars}</h2>
                 {priceTotalInDollars.length > 0 &&
                <Button size="sm" color="primary" onClick={() => this.props.back('checkout', {})} type="button" className="mt-5 mb-3">Checkout</Button>
                 }

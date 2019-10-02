@@ -75,12 +75,12 @@ export class CheckoutForm extends React.Component {
             </Row>
             <form onSubmit={this.handleSubmit}>
               <Row className="justify-content-around">
-                <Button size="sm" color="primary ml-5" onClick={() => this.props.back('catalog', {})} type="button" className="mt-5 mb-3">Continue Shopping</Button>
-                <h2 className="text-white mt-5">Total: {priceTotalInDollars}</h2>
-                <Button size="sm" onClick={this.toggle} color="primary" className="orderBtn mt-5 mr-5">Place Order</Button>
+                <Button size="sm" color="primary ml-5" onClick={() => this.props.back('catalog', {})} type="button" className="mobileFont mt-5 mb-3">Continue Shopping</Button>
+                <h2 className="mobileFontHeader text-white mt-5">Total: {priceTotalInDollars}</h2>
+                <Button size="sm" onClick={this.toggle} color="primary" className="mobileFont orderBtn mt-5 mr-5">Place Order</Button>
               </Row>
               <div className="row justify-content-center">
-                <div className="col-sm-9 col-lg-9">
+                <div className="col-xs-4 col-lg-9">
                   <div className="input-group input-group-lg mt-2">
                     <div className="input-group-prepend">
                       <span className="input-group-text" id="inputGroup-sizing-lg">required</span>
@@ -97,7 +97,7 @@ export class CheckoutForm extends React.Component {
 
                   <div className="input-group input-group-lg mt-4">
                     <div className="input-group-prepend">
-                      <span className="input-group-text" id="inputGroup-sizing-lg">Shipping Address</span>
+                      <span className="input-group-text" id="inputGroup-sizing-lg">Address</span>
                     </div>
                     <textarea className="form-control" aria-label="Required" onChange={this.handleChangeShippingAddress} />
                   </div>
@@ -107,7 +107,7 @@ export class CheckoutForm extends React.Component {
                       <p>Thank you! No purchase has been processed</p>
                       <p>Name: {this.state.name}</p>
                       <p>Payment: {this.state.creditCard}</p>
-                      <p>Shipping Address: {this.state.shippingAddress}</p>
+                      <p>Address: {this.state.shippingAddress}</p>
                     </ModalBody>
                     <ModalFooter>
                       <Button color="secondary" onClick={this.toggleSubmit}>Close</Button>
