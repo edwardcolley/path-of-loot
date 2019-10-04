@@ -68,7 +68,7 @@ export default class ProductDetails extends React.Component {
           </Row>
           <Row className="productRow mt-5">
             <Col sm="1" lg="0"></Col>
-            <Col sm="10" lg="6" >
+            <Col sm="10" lg="6" className="mobileDetailsStyle tabletDetailsStyle">
               <ImageCarousel images={this.state.product.images}/>
             </Col>
 
@@ -81,10 +81,10 @@ export default class ProductDetails extends React.Component {
                 </Col>
               </Row>
               <Row className="justify-content-md-center">
-                <Col md={{ size: 6, offset: 1 }}>
-                  <button onClick={this.toggleModal} type="button" className="mobileBtn btn btn-primary mx-auto">Add to Cart</button>
-                  <br/>
-                </Col>
+                {/* <Col md={{ size: 6, offset: 1 }}> */}
+                <button onClick={this.toggleModal} type="button" className="mobileBtn btn btn-primary mx-auto">Add to Cart</button>
+                {/* <br/> */}
+                {/* </Col> */}
               </Row>
               <br/>
               <p className="mt-2 mb-4 text-white longDescription">{this.state.product.longDescription}</p>
