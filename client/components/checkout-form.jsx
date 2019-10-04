@@ -96,7 +96,7 @@ export class CheckoutForm extends React.Component {
     return (
       <React.Fragment>
         <Row>
-          <Col xs={{ size: 8, offset: 2 }} className="productBackground">
+          <Col xs={{ size: 8, offset: 2 }} className="checkoutBackground">
             <Row className="poeBanner mt-3 justify-content-center">
               <h1 className="poeHeaderFont display-3 font-weight-bold text-center mt-4">Checkout</h1>
             </Row>
