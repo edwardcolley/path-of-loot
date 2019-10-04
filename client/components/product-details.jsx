@@ -62,7 +62,7 @@ export default class ProductDetails extends React.Component {
             <Col xs={{ size: 1 }} className="mt-4">
               <button onClick={() => this.props.back('catalog', {})} type="button" className="btn btn-secondary my-3">Back</button>
             </Col>
-            <Col xs={{ offset: 2 }}>
+            <Col md={{ offset: 1 }} lg={{ offset: 2 }}>
               <h1 className="poeHeaderFont display-3 font-weight-bold text-center mt-4">Product Details</h1>
             </Col>
           </Row>
@@ -82,7 +82,7 @@ export default class ProductDetails extends React.Component {
               </Row>
               <Row className="justify-content-md-center">
                 <Col md={{ size: 6, offset: 1 }}>
-                  <button onClick={this.toggleModal} type="button" className="btn btn-primary mx-auto">Add to Cart</button>
+                  <button onClick={this.toggleModal} type="button" className="mobileBtn btn btn-primary mx-auto">Add to Cart</button>
                   <br/>
                 </Col>
               </Row>
