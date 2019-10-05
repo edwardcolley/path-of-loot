@@ -5,7 +5,7 @@ export class LandingPage extends React.Component {
 
   render() {
     return (
-      <Container fluid="true" className="landingPage">
+      <Container fluid={true} className="landingPage">
         <Row className="justify-content-end">
           <Col xs={{ size: 6 }}>
             <h1 className="text-white mt-5 mr-5">Path of Currency</h1>
