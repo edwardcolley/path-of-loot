@@ -3,7 +3,7 @@
 @media only screen and (max-device-width : 480px) {
 /* iphone portrait */
 
-  body {
+  /* body {
     font-family: 'Exo', sans-serif;
     height: 100vh;
     background-image: url('./images/poeBackground.png');
@@ -12,6 +12,11 @@
     background-position: center;
     background-size: cover;
     
+} */
+
+body,
+.landingPage {
+  height: 100vh
 }
 
 .mobileFont {
@@ -59,7 +64,7 @@
 
 .landingPage {
   height: 100vh;
-  width: 100%;
+  width: 100vw;
   background-image: url('./images/pathofexilebeach.jpg');
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -284,6 +289,10 @@
   width: 98%;
 }
 
+input {
+  cursor: pointer
+}
+
 }  
 
 
@@ -332,7 +341,7 @@
 
 .landingPage {
   height: 100vh;
-  width: 100%;
+  width: 100vw;
   background-image: url('./images/pathofexilebeach.jpg');
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -557,6 +566,9 @@
   width: 98%;
 }
 
+input {
+  cursor: pointer
+}
 
 }
 
@@ -835,6 +847,9 @@
   width: 98%;
 }
 
+input {
+  cursor: pointer
+}
 
 }
 
@@ -1109,6 +1124,10 @@
   width: 98%;
 }
 
+input {
+  cursor: pointer
+}
+
 }
 
 
@@ -1126,6 +1145,10 @@
       background-position: center;
       background-size: cover;
       
+  }
+
+  input {
+    cursor: pointer
   }
 
   .carouselStyle {

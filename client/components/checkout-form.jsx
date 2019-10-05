@@ -8,7 +8,9 @@ export class CheckoutForm extends React.Component {
       name: '',
       creditCard: '',
       shippingAddress: '',
-      modal: false
+      modal: false,
+      warningModal: false,
+      warningStatement: ''
     };
     this.handleChangeName = this.handleChangeName.bind(this);
     this.handleChangeCreditCard = this.handleChangeCreditCard.bind(this);
@@ -17,6 +19,7 @@ export class CheckoutForm extends React.Component {
     this.toggle = this.toggle.bind(this);
     this.toggleSubmit = this.toggleSubmit.bind(this);
     this.validateNumber = this.validateNumber.bind(this);
+    this.toggleWarning = this.toggleWarning.bind(this);
   }
 
   handleSubmit(event) {
@@ -53,6 +56,12 @@ export class CheckoutForm extends React.Component {
     }));
   }
 
+  toggleWarning() {
+    this.setState(prevState => ({
+      warningModal: !prevState.warningModal
+    }));
+  }
+
   toggleSubmit() {
     this.setState(prevState => ({
       modal: !prevState.modal
@@ -63,10 +72,13 @@ export class CheckoutForm extends React.Component {
   validateNumber() {
     var ccNum = document.getElementById('Num').value;
     var name = document.getElementById('Name').value;
+    var address = document.getElementById('Address').value;
     var cardRegEx = /[0-9]{4,4}-[0-9]{4,4}-[0-9]{4,4}-[0-9]{4,4}/;
     var nameRegEx = /[a-zA-z]{2,40}/;
+    var addressRegEx = /^[0-9_\s]+[a-zA-Z0-9_\s\r\n.,]+[0-9]{5}$/;
     var isCardValid = false;
     var isNameValid = false;
+    var isAddressValid = false;
 
     if (cardRegEx.test(ccNum)) {
       isCardValid = true;
@@ -75,14 +87,27 @@ export class CheckoutForm extends React.Component {
       isNameValid = true;
     }
 
-    if (isCardValid && isNameValid) {
+    if (addressRegEx.test(address)) {
+      isAddressValid = true;
+    }
+
+    if (isCardValid && isNameValid && isAddressValid) {
       this.toggle();
-    }
-    if (!isNameValid) {
-      alert('Please provide a name');
-    }
-    if (!isCardValid) {
-      alert('Please provide a card number: ****-****-****-****');
+    } else if (!isNameValid) {
+      this.setState({
+        warningStatement: 'Please provide your name'
+      });
+      this.toggleWarning();
+    } else if (!isCardValid) {
+      this.setState({
+        warningStatement: 'Please provide a card number: ****-****-****-****'
+      });
+      this.toggleWarning();
+    } else if (!isAddressValid) {
+      this.setState({
+        warningStatement: 'Please provide a valid shipping address'
+      });
+      this.toggleWarning();
     }
   }
 
@@ -96,7 +121,7 @@ export class CheckoutForm extends React.Component {
     return (
       <React.Fragment>
         <Row>
-          <Col xs={{ size: 8, offset: 2 }} className="checkoutBackground">
+          <Col xs={{ size: 10, offset: 1 }} className="checkoutBackground">
             <Row className="poeBanner mt-3 justify-content-center">
               <h1 className="poeHeaderFont display-3 font-weight-bold text-center mt-4">Checkout</h1>
             </Row>
@@ -120,14 +145,14 @@ export class CheckoutForm extends React.Component {
                       <span className="input-group-text" id="inputGroup-sizing-lg">required</span>
                     </div>
 
-                    <input type="text" name="Number" id="Num" className="form-control" onChange={this.handleChangeCreditCard} placeholder="Payment Method" aria-label="Payment Method" aria-describedby="inputGroup-sizing-lg" />
+                    <input type="text" name="Number" id="Num" className="form-control" onChange={this.handleChangeCreditCard} placeholder="Payment Method: xxxx-xxxx-xxxx-xxxx" aria-label="Payment Method" aria-describedby="inputGroup-sizing-lg" />
                   </div>
 
                   <div className="input-group input-group mt-4">
                     <div className="input-group-prepend">
-                      <span className="input-group-text" id="inputGroup-sizing-lg">Address</span>
+                      <span className="input-group-text" id="inputGroup-sizing-lg">required</span>
                     </div>
-                    <textarea className="form-control" aria-label="Required" onChange={this.handleChangeShippingAddress} />
+                    <textarea className="form-control" id="Address" aria-label="Required" placeholder="Shipping Address" onChange={this.handleChangeShippingAddress} />
                   </div>
                   <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                     <ModalHeader toggle={this.toggle}>Modal title</ModalHeader>
@@ -139,6 +164,16 @@ export class CheckoutForm extends React.Component {
                     </ModalBody>
                     <ModalFooter>
                       <Button color="secondary" onClick={this.toggleSubmit}>Close</Button>
+                    </ModalFooter>
+                  </Modal>
+                  {/* warning modal */}
+                  <Modal isOpen={this.state.warningModal} toggle={this.toggleWarning}>
+                    <ModalHeader toggle={this.WarningToggle}>Error!</ModalHeader>
+                    <ModalBody>
+                      {this.state.warningStatement}
+                    </ModalBody>
+                    <ModalFooter>
+                      <Button color="secondary" onClick={this.toggleWarning}>Close</Button>
                     </ModalFooter>
                   </Modal>
                 </div>

@@ -1,11 +1,11 @@
 import React from 'react';
-import { Row, Col, Button } from 'reactstrap';
+import { Container, Row, Col, Button } from 'reactstrap';
 
 export class LandingPage extends React.Component {
 
   render() {
     return (
-      <div className="landingPage">
+      <Container fluid="true" className="landingPage">
         <Row className="justify-content-end">
           <Col xs={{ size: 6 }}>
             <h1 className="text-white mt-5 mr-5">Path of Currency</h1>
@@ -19,7 +19,7 @@ export class LandingPage extends React.Component {
           </Col>
         </Row>
         <p className="disclaimerText text-white"><i className="fas fa-exclamation"></i> Disclaimer: This is a demo site and not a real e-commerce store, but please enjoy your time here!</p>
-      </div>
+      </Container>
     );
   }
 
