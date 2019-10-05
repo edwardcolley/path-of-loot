@@ -289,8 +289,39 @@ body,
   width: 98%;
 }
 
+.poeIcon,
 input {
   cursor: pointer
+}
+
+.zoom {
+  transition: transform .3s;
+}
+
+.zoom:hover {
+  transform: scale(1.5);
+}
+
+.zoom2 {
+  transition: transform .3s;
+}
+
+.zoom2:hover {
+  transform: scale(1.2);
+}
+
+.zoom3 {
+  transition: transform .3s;
+}
+
+.zoom3:hover {
+  transform: scale(3.5);
+}
+
+.zoom:hover {
+  -ms-transform: scale(1.5); /* IE 9 */
+  -webkit-transform: scale(1.5); /* Safari 3-8 */
+  transform: scale(1.5); 
 }
 
 }  
@@ -566,8 +597,39 @@ input {
   width: 98%;
 }
 
+.poeIcon,
 input {
   cursor: pointer
+}
+
+.zoom {
+  transition: transform .3s;
+}
+
+.zoom:hover {
+  transform: scale(1.5);
+}
+
+.zoom2 {
+  transition: transform .3s;
+}
+
+.zoom2:hover {
+  transform: scale(1.2);
+}
+
+.zoom3 {
+  transition: transform .3s;
+}
+
+.zoom3:hover {
+  transform: scale(3.5);
+}
+
+.zoom:hover {
+  -ms-transform: scale(1.5); /* IE 9 */
+  -webkit-transform: scale(1.5); /* Safari 3-8 */
+  transform: scale(1.5); 
 }
 
 }
@@ -847,8 +909,39 @@ input {
   width: 98%;
 }
 
+.poeIcon,
 input {
   cursor: pointer
+}
+
+.zoom {
+  transition: transform .3s;
+}
+
+.zoom:hover {
+  transform: scale(1.5);
+}
+
+.zoom2 {
+  transition: transform .3s;
+}
+
+.zoom2:hover {
+  transform: scale(1.2);
+}
+
+.zoom3 {
+  transition: transform .3s;
+}
+
+.zoom3:hover {
+  transform: scale(3.5);
+}
+
+.zoom:hover {
+  -ms-transform: scale(1.5); /* IE 9 */
+  -webkit-transform: scale(1.5); /* Safari 3-8 */
+  transform: scale(1.5); 
 }
 
 }
@@ -1124,8 +1217,39 @@ input {
   width: 98%;
 }
 
+.poeIcon,
 input {
   cursor: pointer
+}
+
+.zoom {
+  transition: transform .3s;
+}
+
+.zoom:hover {
+  transform: scale(1.5);
+}
+
+.zoom2 {
+  transition: transform .3s;
+}
+
+.zoom2:hover {
+  transform: scale(1.2);
+}
+
+.zoom3 {
+  transition: transform .3s;
+}
+
+.zoom3:hover {
+  transform: scale(3.5);
+}
+
+.zoom:hover {
+  -ms-transform: scale(1.5); /* IE 9 */
+  -webkit-transform: scale(1.5); /* Safari 3-8 */
+  transform: scale(1.5); 
 }
 
 }
@@ -1166,6 +1290,14 @@ input {
 
   .zoom2:hover {
     transform: scale(1.2);
+  }
+
+  .zoom3 {
+    transition: transform .3s;
+  }
+
+  .zoom3:hover {
+    transform: scale(3.5);
   }
   
   .zoom:hover {

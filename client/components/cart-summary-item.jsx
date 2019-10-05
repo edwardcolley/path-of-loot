@@ -54,7 +54,7 @@ export class CartSummaryItem extends React.Component {
           <td>
             <Row className="text-center">
               <Col>
-                <img height="50" width="50"src={this.props.input.image} alt="item image" />
+                <img className="zoom3" height="50" width="50"src={this.props.input.image} alt="item image" />
               </Col>
             </Row>
           </td>
