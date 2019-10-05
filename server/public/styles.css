@@ -3,7 +3,7 @@
 @media only screen and (max-device-width : 480px) {
 /* iphone portrait */
 
-  /* body {
+  body {
     font-family: 'Exo', sans-serif;
     height: 100vh;
     background-image: url('./images/poeBackground.png');
@@ -12,7 +12,7 @@
     background-position: center;
     background-size: cover;
     
-} */
+}
 
 body,
 .landingPage {
@@ -1147,8 +1147,31 @@ input {
       
   }
 
+  .poeIcon,
   input {
     cursor: pointer
+  }
+
+  .zoom {
+    transition: transform .3s;
+  }
+
+  .zoom:hover {
+    transform: scale(1.5);
+  }
+
+  .zoom2 {
+    transition: transform .3s;
+  }
+
+  .zoom2:hover {
+    transform: scale(1.2);
+  }
+  
+  .zoom:hover {
+    -ms-transform: scale(1.5); /* IE 9 */
+    -webkit-transform: scale(1.5); /* Safari 3-8 */
+    transform: scale(1.5); 
   }
 
   .carouselStyle {
