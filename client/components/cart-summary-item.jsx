@@ -89,14 +89,14 @@ export class CartSummaryItem extends React.Component {
           <td>
             <Row className="text-center">
               <Col>
-                <i className="far fa-edit fa-lg mt-3 trashIcon" onClick={this.updateItem}></i>
+                <i className="far fa-edit fa-lg mt-3 trashIcon zoom" onClick={this.updateItem}></i>
               </Col>
             </Row>
           </td>
           <td>
             <Row className="text-center">
               <Col>
-                <i className="fas fa-trash-alt fa-lg mt-3 trashIcon" onClick={this.toggleDeleteModal}></i>
+                <i className="fas fa-trash-alt fa-lg mt-3 trashIcon zoom" onClick={this.toggleDeleteModal}></i>
               </Col>
             </Row>
           </td>

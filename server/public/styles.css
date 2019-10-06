@@ -289,9 +289,12 @@ body,
   width: 98%;
 }
 
-.poeIcon,
-input {
+.poeIcon {
   cursor: pointer
+}
+
+input {
+  cursor: text;
 }
 
 .zoom {
@@ -597,9 +600,12 @@ input {
   width: 98%;
 }
 
-.poeIcon,
-input {
+.poeIcon {
   cursor: pointer
+}
+
+input {
+  cursor: text;
 }
 
 .zoom {
@@ -909,9 +915,12 @@ input {
   width: 98%;
 }
 
-.poeIcon,
-input {
+.poeIcon {
   cursor: pointer
+}
+
+input {
+  cursor: text;
 }
 
 .zoom {
@@ -1217,9 +1226,12 @@ input {
   width: 98%;
 }
 
-.poeIcon,
-input {
+.poeIcon {
   cursor: pointer
+}
+
+input {
+  cursor: text;
 }
 
 .zoom {
@@ -1271,9 +1283,12 @@ input {
       
   }
 
-  .poeIcon,
-  input {
+  .poeIcon {
     cursor: pointer
+  }
+
+  input {
+    cursor: text;
   }
 
   .zoom {
