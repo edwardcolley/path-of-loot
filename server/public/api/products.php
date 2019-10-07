@@ -6,6 +6,7 @@ set_exception_handler('handleError');
 startUp();
 
 require_once('db_connection.php');
+$conn->set_charset('utf8');
 
 if (empty($_GET['id'])) {
   $query = "SELECT p.id, p.name, p.price, p.shortDescription, p.longDescription, 
