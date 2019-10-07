@@ -155,7 +155,6 @@ export class CheckoutForm extends React.Component {
                     <textarea className="form-control" id="Address" aria-label="Required" placeholder="Shipping Address" onChange={this.handleChangeShippingAddress} />
                   </div>
                   <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-                    <ModalHeader toggle={this.toggle}>Modal title</ModalHeader>
                     <ModalBody>
                       <p>Thank you! No purchase has been processed</p>
                       <p>Name: {this.state.name}</p>
