@@ -73,8 +73,8 @@ export class CheckoutForm extends React.Component {
     var ccNum = document.getElementById('Num').value;
     var name = document.getElementById('Name').value;
     var address = document.getElementById('Address').value;
-    var cardRegEx = /[0-9]{4,4}-[0-9]{4,4}-[0-9]{4,4}-[0-9]{4,4}/;
-    var nameRegEx = /[a-zA-z]{2,40}/;
+    var cardRegEx = /[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4}/;
+    var nameRegEx = /[a-zA-z_\s]{2,40}/;
     var addressRegEx = /^[0-9_\s]+[a-zA-Z0-9_\s\r\n.,]+[0-9]{5}$/;
     var isCardValid = false;
     var isNameValid = false;
