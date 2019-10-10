@@ -250,7 +250,6 @@ export default class App extends React.Component {
     if (this.state.view.name === 'catalog') {
       return (
         <React.Fragment>
-          <div className="landingPage"></div>
           <div className="productList">
             <NavBar onClick={this.setView} cartItemCount={this.state.cart}/>
             <div className="container-fluid">
