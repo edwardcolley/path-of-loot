@@ -7,7 +7,7 @@ export class LandingPage extends React.Component {
     return (
       <Container fluid={true} className="landingPage">
         <Row className="justify-content-end">
-          <Col xs={{ size: 6 }}>
+          <Col xs={{ size: 10 }} sm={{ size: 6 }}>
             <h1 className="text-white mt-5 mr-5">Path of Currency</h1>
             <h5 className="text-white">Welcome to Path of Currency, where all your Path of Exile currency
             needs can be met. Please enjoy the site!</h5>

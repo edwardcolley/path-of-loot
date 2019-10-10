@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Exo&display=swap');
 
-@media only screen and (max-device-width : 480px) {
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 667px) 
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) { 
 /* iphone portrait */
 
   body {
@@ -19,8 +23,12 @@ body,
   height: 100vh
 }
 
+.card-group>.card {
+  margin-bottom: 0 !important;
+}
+
 .mobileFont {
-  font-size: .1rem;
+  font-size: .9rem;
   margin-left: 5px !important;
   margin-right: 0 !important;
   padding: 0 !important;
@@ -115,7 +123,7 @@ body,
 
 
   .cardHeaderStyle {
-    font-size: .95rem;
+    font-size: .78rem;
     font-variant: small-caps;
   }
 
@@ -330,7 +338,11 @@ input {
 }  
 
 
-@media only screen and (min-device-width: 480px) and (max-device-width: 767px){
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 667px) 
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: landscape) { 
 /* iphone landscape */
 
   body {
@@ -345,7 +357,7 @@ input {
 }
 
 .mobileFont {
-  font-size: .1rem;
+  font-size: .9rem;
   margin-left: 5px !important;
   margin-right: 0 !important;
 }
@@ -641,7 +653,11 @@ input {
 }
 
 
-@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
+@media only screen 
+  and (min-device-width: 768px) 
+  and (max-device-width: 1024px) 
+  and (orientation: portrait) 
+  and (-webkit-min-device-pixel-ratio: 2) {
   /* ipad portrait */
   body {
     font-family: 'Exo', sans-serif;
@@ -655,7 +671,7 @@ input {
 }
 
 .mobileFont {
-  font-size: .1rem;
+  font-size: .9rem;
   margin-left: 5px !important;
   margin-right: 0 !important;
 }
@@ -957,7 +973,11 @@ input {
 
 
 
-@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
+@media only screen 
+  and (min-device-width: 768px) 
+  and (max-device-width: 1024px) 
+  and (orientation: landscape) 
+  and (-webkit-min-device-pixel-ratio: 2) {
   /* ipad landscape */
   body {
     font-family: 'Exo', sans-serif;
@@ -971,7 +991,7 @@ input {
 }
 
 .mobileFont {
-  font-size: .1rem;
+  font-size: .9rem;
   margin-left: 5px !important;
   margin-right: 0 !important;
 }
